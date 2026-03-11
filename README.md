@@ -72,7 +72,7 @@ npm run dev
 
 ## 👤 Author
 
-- **Shivam**
+- **Ravindra Yadav**
 - GitHub: [student-shivam](https://github.com/student-shivam)
 
 ---
