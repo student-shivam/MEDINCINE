@@ -4,12 +4,12 @@ const { createOrder, getOrder } = require('../controllers/orderController');
 
 const router = express.Router();
 
+// Public route for invoice viewing
+router.get('/:id', getOrder);
+
 router.use(protect, authorize('admin', 'pharmacist'));
 
 router.route('/')
     .post(createOrder);
-
-router.route('/:id')
-    .get(getOrder);
 
 module.exports = router;

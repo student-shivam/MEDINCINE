@@ -81,8 +81,9 @@ function App() {
                 <Route element={<ProtectedRoute roles={['admin', 'pharmacist']} />}>
                   <Route path="/pos" element={<POS />} />
                   <Route path="/checkout" element={<Checkout />} />
-                  <Route path="/invoice/:id" element={<InvoicePreview />} />
                 </Route>
+
+                <Route path="/invoice/:id" element={<InvoicePreview />} />
 
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/settings" element={<Settings />} />
@@ -92,13 +93,16 @@ function App() {
                 <Route path="/settings/pharmacy" element={<PharmacySettingsPage />} />
                 <Route path="/settings/invoice" element={<InvoiceSettingsPage />} />
 
+                <Route element={<ProtectedRoute roles={['admin', 'pharmacist']} />}>
+                  <Route path="/admin/sales" element={<Sales />} />
+                </Route>
+
                 <Route element={<ProtectedRoute roles={['admin']} />}>
                   <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
                   <Route path="/admin/dashboard" element={<Dashboard />} />
                   <Route path="/admin/medicines" element={<Medicines />} />
                   <Route path="/admin/add-medicine" element={<AddMedicine />} />
                   <Route path="/edit-medicine/:id" element={<EditMedicine />} />
-                  <Route path="/admin/sales" element={<Sales />} />
                   <Route path="/admin/staff" element={<UserManagement />} />
                   <Route path="/admin/reports" element={<Analytics />} />
                 </Route>

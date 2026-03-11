@@ -23,8 +23,30 @@ const InvoicePreview = () => {
     const { data: order, isLoading } = useQuery({
         queryKey: ['order-invoice', id],
         queryFn: async () => {
-            const response = await api.get(`/orders/${id}`);
-            return response.data.data;
+            try {
+                const response = await api.get(`/orders/${id}`);
+                return response.data.data;
+            } catch (err) {
+                // Fallback to legacy sales endpoint
+                try {
+                    const response = await api.get(`/sales/${id}`);
+                    const sale = response.data.data;
+                    // Normalize Sale to match Order structure
+                    return {
+                        ...sale,
+                        total: sale.grandTotal || sale.total,
+                        phone: sale.customerMobile || sale.phone,
+                        tax: sale.gst || sale.tax,
+                        medicines: sale.medicines?.map(m => ({
+                            name: m.name || m.medicine?.name || 'Medicine',
+                            quantity: m.quantity,
+                            price: m.sellingPrice || m.price || 0
+                        })) || []
+                    };
+                } catch (saleErr) {
+                    throw err;
+                }
+            }
         }
     });
 

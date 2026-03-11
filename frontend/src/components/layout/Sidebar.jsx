@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { RiDashboardFill, RiMedicineBottleLine, RiAddCircleLine, RiUserLine, RiSettings4Line, RiBarChartFill, RiShoppingCartLine, RiLogoutBoxRLine } from 'react-icons/ri';
+import { RiDashboardFill, RiMedicineBottleLine, RiAddCircleLine, RiUserLine, RiSettings4Line, RiBarChartFill, RiShoppingCartLine, RiLogoutBoxRLine, RiHistoryLine, RiTeamLine } from 'react-icons/ri';
 import { GiMedicinePills } from 'react-icons/gi';
 import { useQuery } from '@tanstack/react-query';
 import api from '../../services/api';
@@ -26,6 +26,8 @@ const Sidebar = () => {
 
     const userRole = (user?.role || '').toLowerCase();
     const isAdmin = userRole === 'admin';
+    const isPharmacist = userRole === 'pharmacist';
+    const canViewSales = isAdmin || isPharmacist;
 
     const handleLogout = () => {
         clearAuthSession();
@@ -67,26 +69,40 @@ const Sidebar = () => {
                             <span>POS</span>
                         </NavLink>
 
-                        <NavLink to="/admin/sales" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
-                            <RiShoppingCartLine />
-                            <span>Sales</span>
-                        </NavLink>
+                        {canViewSales && (
+                            <NavLink to="/admin/sales" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
+                                <RiHistoryLine />
+                                <span>Sales Records</span>
+                            </NavLink>
+                        )}
 
-                        <NavLink to="/admin/staff" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
-                            <RiUserLine />
-                            <span>Staff</span>
-                        </NavLink>
+                        {isAdmin && (
+                            <>
+                                <NavLink to="/admin/staff" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
+                                    <RiTeamLine />
+                                    <span>Staff</span>
+                                </NavLink>
 
-                        <NavLink to="/admin/reports" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
-                            <RiBarChartFill />
-                            <span>Reports</span>
-                        </NavLink>
+                                <NavLink to="/admin/reports" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
+                                    <RiBarChartFill />
+                                    <span>Reports</span>
+                                </NavLink>
+                            </>
+                        )}
                     </>
                 ) : (
-                    <NavLink to="/pos" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
-                        <RiShoppingCartLine />
-                        <span>POS</span>
-                    </NavLink>
+                    <>
+                        <NavLink to="/pos" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
+                            <RiShoppingCartLine />
+                            <span>POS</span>
+                        </NavLink>
+                        {isPharmacist && (
+                            <NavLink to="/admin/sales" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
+                                <RiHistoryLine />
+                                <span>Sales Records</span>
+                            </NavLink>
+                        )}
+                    </>
                 )}
 
                 <NavLink to="/settings" className={({ isActive }) => isActive ? 'menu-item active' : 'menu-item'}>
