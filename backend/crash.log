@@ -1,0 +1,928 @@
+2026-02-25T07:20:50.102Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:26:38.407Z
+Error: Invalid credentials
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\authController.js:59:21
+
+2026-02-25T12:26:42.176Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:30:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+
+2026-02-25T12:26:42.192Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:30:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+
+2026-02-25T12:27:07.108Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:27:08.533Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:27:10.780Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:27:13.339Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:27:14.670Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:27:16.924Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:27:20.613Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:27:21.928Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:28:17.240Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:28:18.542Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:28:19.855Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:28:22.155Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:28:22.703Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:28:24.098Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:28:28.724Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:39:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:28:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:28:29.899Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:39:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:28:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:28:31.983Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:39:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:28:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-02-25T12:42:02.049Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:30:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+
+2026-02-25T12:42:02.083Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:30:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+
+2026-02-26T04:51:22.306Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:30:21)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at process.processTimers (node:internal/timers:516:9)
+
+2026-02-26T04:51:30.019Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:19:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+
+2026-03-09T04:51:06.202Z
+Error: Invalid credentials
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\authController.js:52:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T04:52:17.508Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T04:52:18.642Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T04:52:20.757Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T04:52:24.395Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T04:52:25.516Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T04:52:27.456Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T04:52:28.532Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T04:52:29.056Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T04:52:30.168Z
+ReferenceError: cd is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:68:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T05:12:51.917Z
+TypeError: Cannot read properties of null (reading 'name')
+    at exports.generateSalePDF (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\utils\pdfGenerator.js:48:27)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\saleController.js:237:5
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T06:35:40.439Z
+Error: Invalid credentials
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\authController.js:59:21
+
+2026-03-09T07:32:18.024Z
+ValidationError: Validation failed: category: analogis is not a valid category
+    at _done (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:227:19)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:203:11
+    at schemaPath.doValidate.updateValidator (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:161:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\schemaType.js:1438:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2026-03-09T07:32:19.905Z
+ValidationError: Validation failed: category: analogis is not a valid category
+    at _done (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:227:19)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:203:11
+    at schemaPath.doValidate.updateValidator (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:161:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\schemaType.js:1438:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2026-03-09T07:32:21.449Z
+ValidationError: Validation failed: category: analogis is not a valid category
+    at _done (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:227:19)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:203:11
+    at schemaPath.doValidate.updateValidator (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:161:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\schemaType.js:1438:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2026-03-09T07:32:21.748Z
+ValidationError: Validation failed: category: analogis is not a valid category
+    at _done (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:227:19)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:203:11
+    at schemaPath.doValidate.updateValidator (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:161:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\schemaType.js:1438:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2026-03-09T07:32:21.995Z
+ValidationError: Validation failed: category: analogis is not a valid category
+    at _done (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:227:19)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:203:11
+    at schemaPath.doValidate.updateValidator (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:161:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\schemaType.js:1438:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2026-03-09T07:32:27.014Z
+ValidationError: Validation failed: category: analogis is not a valid category
+    at _done (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:227:19)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:203:11
+    at schemaPath.doValidate.updateValidator (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\helpers\updateValidators.js:161:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\schemaType.js:1438:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2026-03-09T07:56:48.600Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:45:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:34:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T07:56:49.730Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:45:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:34:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T07:56:51.888Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:45:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:34:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T07:56:55.978Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:45:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:34:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T08:05:41.605Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:45:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:34:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T08:05:42.678Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:45:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:34:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T08:05:44.786Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:45:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:34:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T08:05:48.882Z
+Error: User role pharmacist is not authorized to access this route
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:45:17
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:34:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T09:55:15.872Z
+Error: Email already exists
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\authController.js:22:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T09:58:24.202Z
+Error: Invalid credentials
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\authController.js:59:21
+
+2026-03-09T09:58:26.486Z
+Error: Invalid credentials
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\authController.js:59:21
+
+2026-03-09T10:29:15.260Z
+Error: "categoryId" must be a string, "subcategoryId" must be a string, "image" is not allowed, "createdBy" is not allowed
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:240:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T10:29:43.370Z
+Error: "categoryId" must be a string, "subcategoryId" must be a string, "image" is not allowed, "createdBy" is not allowed
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:240:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T10:29:49.574Z
+Error: "categoryId" must be a string, "subcategoryId" must be a string, "image" is not allowed, "createdBy" is not allowed
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:240:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T10:29:55.818Z
+Error: "categoryId" must be a string, "subcategoryId" must be a string, "image" is not allowed, "createdBy" is not allowed
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:240:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T10:30:01.347Z
+Error: "categoryId" must be a string, "subcategoryId" must be a string, "image" is not allowed, "createdBy" is not allowed
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:240:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T10:33:14.458Z
+Error: "image" is not allowed, "createdBy" is not allowed
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:240:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T10:33:21.851Z
+Error: "image" is not allowed, "createdBy" is not allowed
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:240:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T10:33:56.368Z
+Error: "image" is not allowed, "createdBy" is not allowed
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:240:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-09T10:40:07.711Z
+Error: Invalid credentials
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\authController.js:59:21
+
+2026-03-10T05:01:00.498Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:19:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+
+2026-03-10T05:01:00.519Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:19:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+
+2026-03-10T08:01:59.647Z
+ValidationError: Medicine validation failed: categoryId: Please select a category
+    at Document.invalidate (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\document.js:3381:32)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\document.js:3142:17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\schemaType.js:1446:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2026-03-10T08:02:12.813Z
+ValidationError: Medicine validation failed: categoryId: Please select a category
+    at Document.invalidate (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\document.js:3381:32)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\document.js:3142:17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\schemaType.js:1446:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2026-03-10T08:15:35.322Z
+ValidationError: Medicine validation failed: categoryId: Please select a category
+    at Document.invalidate (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\document.js:3381:32)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\document.js:3142:17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongoose\lib\schemaType.js:1446:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+2026-03-10T09:53:34.448Z
+Error: Medicine not found with id of 699e99c3eadf05fd1163cd17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:306:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-10T09:53:37.308Z
+Error: Medicine not found with id of 699e99c3eadf05fd1163cd17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:306:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-10T09:53:39.151Z
+Error: Medicine not found with id of 699e99c3eadf05fd1163cd17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:306:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-10T09:53:40.688Z
+Error: Medicine not found with id of 699e99c3eadf05fd1163cd17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:306:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-10T09:53:41.442Z
+Error: Medicine not found with id of 699e99c3eadf05fd1163cd17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:306:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-10T09:53:41.512Z
+Error: Medicine not found with id of 699e99c3eadf05fd1163cd17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:306:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-10T09:53:41.814Z
+Error: Medicine not found with id of 699e99c3eadf05fd1163cd17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:306:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-10T09:53:43.963Z
+Error: Medicine not found with id of 699e99c3eadf05fd1163cd17
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\medicineController.js:306:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-10T11:44:44.625Z
+Error: Invalid credentials
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\authController.js:59:21
+
+2026-03-10T11:44:47.060Z
+Error: Invalid credentials
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\authController.js:59:21
+
+2026-03-10T11:47:26.524Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:19:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+
+2026-03-10T11:47:26.548Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:19:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+
+2026-03-10T11:51:16.656Z
+Error: Category already exists
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\categoryController.js:31:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T05:40:06.192Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:36:21)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at listOnTimeout (node:internal/timers:545:9)
+    at process.processTimers (node:internal/timers:519:7)
+
+2026-03-11T05:40:06.238Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:36:21)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at listOnTimeout (node:internal/timers:545:9)
+    at process.processTimers (node:internal/timers:519:7)
+
+2026-03-11T05:40:06.279Z
+MongoServerSelectionError: getaddrinfo ENOTFOUND ac-ticqogs-shard-00-00.4dryvzc.mongodb.net
+    at Topology.selectServer (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongodb\lib\sdam\topology.js:327:38)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at process.processTimers (node:internal/timers:516:9)
+    at async tryOperation (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongodb\lib\operations\execute_operation.js:148:18)
+    at async executeOperation (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongodb\lib\operations\execute_operation.js:78:16)
+    at async AggregationCursor._initialize (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongodb\lib\cursor\aggregation_cursor.js:57:26)
+    at async AggregationCursor.cursorInit (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongodb\lib\cursor\abstract_cursor.js:632:27)
+    at async AggregationCursor.fetchBatch (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongodb\lib\cursor\abstract_cursor.js:666:13)
+    at async AggregationCursor.next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongodb\lib\cursor\abstract_cursor.js:342:17)
+    at async Collection.countDocuments (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\mongodb\lib\collection.js:521:21)
+
+2026-03-11T05:53:25.820Z
+Error: Category is in use and cannot be deleted
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\categoryController.js:91:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T05:53:35.022Z
+Error: Category is in use and cannot be deleted
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\categoryController.js:91:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T07:35:48.244Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T07:35:49.352Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T07:35:51.453Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T07:35:55.553Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T07:36:26.078Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T07:36:27.200Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T07:36:29.306Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T07:36:33.408Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:06:24.441Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:06:25.693Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:06:27.850Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:06:32.251Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:06:58.829Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:07:00.509Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:07:03.035Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:07:07.200Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:11:42.067Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:11:57.121Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:29:49.377Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:29:50.505Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:29:52.733Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:35:10.229Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:35:15.461Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:35:16.605Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:35:18.709Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:35:25.449Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:35:26.774Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:35:29.024Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:35:33.325Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:41:28.397Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:41:30.894Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:41:32.014Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:41:34.848Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:41:50.799Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:45:32.513Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T09:51:23.769Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:97:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:01:53.859Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:02:41.644Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:02:44.426Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:02:49.012Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:02:50.544Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:02:52.619Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:02:55.281Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:03:00.400Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:03:06.441Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T13:03:08.560Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:45:11.753Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:45:14.765Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:45:17.262Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:45:23.189Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:45:24.652Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:45:27.232Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:45:53.700Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:45:59.083Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:48:18.130Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:48:20.500Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:48:26.689Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T16:48:28.070Z
+ReferenceError: topSelling is not defined
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\dashboardController.js:145:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-11T17:08:49.110Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:19:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+
+2026-03-11T17:09:30.169Z
+Error: Not authorized to access this route
+    at exports.protect (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\middleware\authMiddleware.js:19:21)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\node_modules\router\index.js:342:13)
+
+2026-03-13T05:06:13.748Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:135:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+2026-03-13T06:23:00.206Z
+Error: Order not found
+    at C:\Users\HP-PC\Desktop\IndiCorp\Medicine\backend\controllers\orderController.js:135:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+

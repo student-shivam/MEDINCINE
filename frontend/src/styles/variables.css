@@ -130,6 +130,10 @@
   --icon-muted: #64748b;
   --icon-bg: #eef2f7;
 
+  /* Pill / badge defaults */
+  --pill-bg: rgba(148, 163, 184, 0.2);
+  --pill-text: var(--text-body);
+
   /* Advanced Shadow System */
   --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.02);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
@@ -518,7 +522,7 @@ th {
 .table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: var(--bg-card);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -537,7 +541,7 @@ th {
 }
 
 .table tr:hover {
-  background: #f8fafc;
+  background: rgba(148, 163, 184, 0.14);
 }
 
 /* ===== BADGES ===== */
@@ -603,7 +607,12 @@ body.dark-mode {
   --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.4);
   --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.45);
   --shadow-premium: 0 30px 50px rgba(0, 0, 0, 0.5);
+
+  /* Pill / badge defaults for dark mode */
+  --pill-bg: rgba(255, 255, 255, 0.12);
+  --pill-text: var(--text-on-primary);
 }
+
 
 body.dark-mode .public-navbar,
 body.dark-mode .topbar,
@@ -1009,6 +1018,17 @@ body.dark-mode .pos-empty-invoice {
   color: var(--text-muted);
 }
 
+/* Topbar search box in dark mode */
+body.dark-mode .topbar-search-wrapper {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+body.dark-mode .topbar-search-wrapper:focus-within {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(37, 99, 235, 0.5);
+}
+
 /* Add medicine sidebar (category/subcategory chips) */
 body.dark-mode .add-med-manage-card,
 body.dark-mode .add-med-chip-item,
@@ -1032,6 +1052,37 @@ body.dark-mode .add-med-chip-actions button {
 body.dark-mode .add-med-chip-actions button:hover {
   border-color: var(--text-primary);
   color: var(--text-primary);
+}
+
+/* Ensure Add Medicine form inputs remain readable in dark mode */
+body.dark-mode .med-form-group input,
+body.dark-mode .med-form-group select,
+body.dark-mode .add-med-inline-form input,
+body.dark-mode .add-med-inline-form select,
+body.dark-mode .add-med-desc-group textarea {
+  background: #0b1220;
+  border-color: #334155;
+  color: var(--text-heading);
+}
+
+body.dark-mode .med-form-group input::placeholder,
+body.dark-mode .med-form-group select::placeholder,
+body.dark-mode .add-med-inline-form input::placeholder,
+body.dark-mode .add-med-inline-form select::placeholder,
+body.dark-mode .add-med-desc-group textarea::placeholder {
+  color: var(--text-soft);
+}
+
+/* Ensure the "+" add buttons remain visible in dark mode */
+body.dark-mode .inline-add-btn {
+  background: #111827;
+  border-color: #334155;
+  color: var(--text-heading);
+}
+
+body.dark-mode .inline-add-btn:hover {
+  background: rgba(37, 99, 235, 0.5);
+  color: var(--text-on-primary);
 }
 
 /* ===== RESPONSIVE ===== */

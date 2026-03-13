@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const Order = require('../models/Order');
+const Sale = require('../models/Sale');
 const Medicine = require('../models/Medicine');
+const Order = require('../models/Order');
 const ErrorResponse = require('../utils/ErrorResponse');
 const asyncHandler = require('../middleware/asyncHandler');
 
@@ -74,6 +75,43 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
             paymentMethod,
             createdBy: req.user?._id || null,
         }], { session });
+
+        // CREATE CORRESPONDING SALE RECORD FOR DASHBOARD
+        const Sale = mongoose.model('Sale');
+        const saleItems = [];
+        for (const item of items) {
+            const med = await Medicine.findById(item.medicine).session(session);
+            const pPrice = med ? med.purchasePrice || 0 : 0;
+            saleItems.push({
+                medicine: item.medicine,
+                quantity: item.quantity,
+                sellingPrice: item.price,
+                purchasePrice: pPrice,
+                itemTotal: item.price * item.quantity,
+                itemProfit: (item.price - pPrice) * item.quantity
+            });
+        }
+
+        const totalProfit = saleItems.reduce((acc, si) => acc + si.itemProfit, 0);
+
+        console.log(`[POS-SYNC] Creating Sale for Order: ${order[0].invoiceNumber}, Total: ${total}, Profit: ${totalProfit}`);
+
+        await Sale.create([{
+            invoiceNumber: order[0].invoiceNumber,
+            medicines: saleItems,
+            subtotal,
+            gst: tax,
+            gstRate: normalizedTaxRate,
+            grandTotal: total,
+            totalProfit,
+            paymentMethod,
+            customerName: (customerName || 'Walk-in Customer').trim(),
+            customerMobile: (phone || '').trim(),
+            soldBy: req.user?._id || null,
+            createdAt: order[0].createdAt
+        }], { session });
+
+        console.log(`[POS-SYNC] Sale record created successfully for ${order[0].invoiceNumber}`);
 
         await session.commitTransaction();
         session.endSession();

@@ -14,7 +14,11 @@ exports.register = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse(error.details[0].message, 400));
     }
 
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
+    // for public registration we do not trust the client to assign roles;
+    // every new account is a pharmacist by default. an admin user should be
+    // created either by the seeded default admin or via the admin panel.
+    const role = 'pharmacist';
 
     // Check if user exists
     const userExists = await User.findOne({ email });
@@ -65,12 +69,30 @@ exports.login = asyncHandler(async (req, res, next) => {
     sendTokenResponse(user, 200, res);
 });
 
-// Get token from model, create cookie and send response
+// Get token from model, create token and send response
+// this helper is used by register and login; it will also return the
+// newly-created user object without the password so the front-end can
+// persist an authenticated session immediately.
 const sendTokenResponse = (user, statusCode, res) => {
-    // Create token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRE,
-    });
+    if (!process.env.JWT_SECRET) {
+        // Should never happen if startup check passed but guard just in case
+        return res.status(500).json({
+            success: false,
+            error: 'Server configuration error (JWT_SECRET missing)',
+        });
+    }
+
+    let token;
+    try {
+        token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+            expiresIn: process.env.JWT_EXPIRE,
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            error: 'Failed to generate authentication token',
+        });
+    }
 
     // Remove password from user object
     const userObj = user.toObject();

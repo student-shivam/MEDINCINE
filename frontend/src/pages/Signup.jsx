@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { RiMailLine, RiLockPasswordLine, RiUserLine, RiShieldUserLine, RiMedicineBottleFill, RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
+import { getDashboardPathByRole, setAuthSession } from '../utils/auth';
 import toast from 'react-hot-toast';
 import api from '../services/api';
 import '../styles/auth.css';
@@ -15,6 +16,7 @@ const Signup = () => {
         email: '',
         password: '',
         confirmPassword: '',
+        // role will always be pharmacist; it is not exposed in the form
         role: 'pharmacist',
     });
     const [errors, setErrors] = useState({});
@@ -50,9 +52,6 @@ const Signup = () => {
             nextErrors.confirmPassword = 'Passwords do not match';
         }
 
-        if (!['admin', 'pharmacist'].includes(formData.role)) {
-            nextErrors.role = 'Choose a valid role';
-        }
 
         setErrors(nextErrors);
         return Object.keys(nextErrors).length === 0;
@@ -72,9 +71,15 @@ const Signup = () => {
                 password: formData.password,
                 role: formData.role,
             };
-            await api.post('/auth/register', payload);
-            toast.success('Account created. Please login.');
-            navigate('/login', { replace: true });
+            // use the more semantically named /signup route (alias of /register)
+            const response = await api.post('/auth/signup', payload);
+            const { token, data } = response.data;
+
+            // log the user in immediately after creating the account
+            setAuthSession({ token, user: data });
+            const redirectPath = getDashboardPathByRole(data?.role);
+            toast.success('Account created successfully');
+            navigate(redirectPath, { replace: true });
         } catch (error) {
             const message = error.response?.data?.error || 'Signup failed';
             toast.error(message);
@@ -180,23 +185,6 @@ const Signup = () => {
                             {errors.confirmPassword && <p className="field-error">{errors.confirmPassword}</p>}
                         </div>
 
-                        <div className="form-group">
-                            <label className="form-label" htmlFor="role">Role</label>
-                            <div className="input-wrapper">
-                                <RiShieldUserLine className="input-icon" size={20} />
-                                <select
-                                    id="role"
-                                    name="role"
-                                    className={`auth-input auth-select ${errors.role ? 'auth-input--error' : ''}`}
-                                    value={formData.role}
-                                    onChange={handleChange}
-                                >
-                                    <option value="admin">Admin</option>
-                                    <option value="pharmacist">Pharmacist</option>
-                                </select>
-                            </div>
-                            {errors.role && <p className="field-error">{errors.role}</p>}
-                        </div>
 
                         <button type="submit" className="auth-button auth-button--green" disabled={loading}>
                             {loading ? 'Creating account...' : 'Sign Up'}

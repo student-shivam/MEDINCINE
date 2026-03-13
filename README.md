@@ -11,6 +11,9 @@ A professional, full-stack Pharmacy Management System built with the MERN stack 
 - **Invoice System**: Publicly accessible, print-optimized invoices for customers with fallback support for legacy sales data.
 - **Analytics Dashboard**: Visual representation of sales performance, stock levels, and transaction history.
 - **Role-Based Access (RBAC)**: Secure access control for Admins and Pharmacists.
+
+> **Note:** Self‑registration via the signup page only creates pharmacist accounts. An admin
+> can be created automatically at first run or added manually through the admin panel.
 - **Theme Support**: Seamless transition between premium Light and Dark modes with persistent user preference.
 - **Security**: JWT-based authentication, password hashing, and protected API routes.
 
@@ -28,7 +31,7 @@ A professional, full-stack Pharmacy Management System built with the MERN stack 
 
 | Role | Email | Password |
 | :--- | :--- | :--- |
-| **Admin** | `admin123@gmail.com` | `admin123@` |
+| **Admin** | `admin@example.com` | `admin123@` |
 | **Pharmacist** | `csj@gmail.com` | `12345678` |
 
 ---
@@ -43,11 +46,19 @@ A professional, full-stack Pharmacy Management System built with the MERN stack 
 ```bash
 cd backend
 npm install
-# Create a .env file with:
-# PORT=5000
-# MONGO_URI=your_mongodb_connection_string
-# JWT_SECRET=your_jwt_secret
-# NODE_ENV=development
+```
+
+Create a `.env` file in `backend/` with at least the following values (the server now validates them on startup):
+```
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=some_complex_secret
+NODE_ENV=development
+```
+If `MONGO_URI` or `JWT_SECRET` are missing the API will log an error and exit.
+
+Once the environment is ready, start the server:
+```bash
 npm run dev
 ```
 
@@ -55,10 +66,22 @@ npm run dev
 ```bash
 cd frontend
 npm install
-# Create a .env file with:
-# VITE_API_URL=http://localhost:5000/api
+```
+
+Create a `.env` file in `frontend/` (Vite requires variables prefixed with `VITE_`):
+```
+VITE_API_URL=http://localhost:5000/api
+```
+and then run
+```bash
 npm run dev
 ```
+
+> **Note:** after a successful signup the app now logs the user in automatically and redirects
+> them to the appropriate dashboard. If sign‑up or login requests return an error you'll see a
+> toast explaining what went wrong, and the backend logs detailed information to
+> `backend/crash.log` for easier debugging.
+
 
 ---
 

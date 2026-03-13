@@ -81,6 +81,7 @@ function App() {
                 <Route element={<ProtectedRoute roles={['admin', 'pharmacist']} />}>
                   <Route path="/pos" element={<POS />} />
                   <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/cart" element={<Checkout />} />
                 </Route>
 
                 <Route path="/invoice/:id" element={<InvoicePreview />} />

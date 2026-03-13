@@ -64,9 +64,39 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
+// ensure required environment variables are present before starting
 const startServer = async () => {
+    if (!process.env.MONGO_URI) {
+        console.warn('MONGO_URI not defined; the server will attempt to connect to a local MongoDB instance.');
+    }
+
+    if (!process.env.JWT_SECRET) {
+        if (process.env.NODE_ENV === 'development') {
+            console.warn('JWT_SECRET not defined; using a weak default secret for development only.');
+            process.env.JWT_SECRET = 'devsecret';
+        } else {
+            console.error('JWT_SECRET is required in production environments. Set it in your .env file.');
+            process.exit(1);
+        }
+    }
+
     try {
         await connectDB();
+
+        // ensure there is at least one administrative user so developers
+        // can log in right away. This will not overwrite an existing admin.
+        const User = require('./models/User');
+        const adminExists = await User.findOne({ role: 'admin' });
+        if (!adminExists) {
+            await User.create({
+                name: 'Default Admin',
+                email: 'admin@example.com',
+                password: 'admin123@',
+                role: 'admin',
+            });
+            console.log('👤 Default admin account created: admin@example.com / admin123@');
+        }
+
         app.listen(PORT, () => {
             console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
         });

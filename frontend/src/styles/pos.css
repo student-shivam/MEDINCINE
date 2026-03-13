@@ -1,23 +1,34 @@
 .pos-pro-shell {
-    padding: 0.75rem 0.5rem 2rem;
+    padding: 1rem 1rem 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 1.25rem;
     position: relative;
+    min-height: 100vh;
+    background: var(--bg-ambient);
+}
+
+.pos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1.25rem;
 }
 
 .pos-header-bar {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(14, 48, 94, 0.9) 0%, rgba(49, 76, 158, 0.85) 100%);
+    border-radius: 20px;
     color: var(--text-on-primary);
-    padding: 1rem 1.2rem;
+    padding: 1.1rem 1.4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
+    box-shadow: var(--shadow-xl);
     position: sticky;
     top: 0;
     z-index: 1200;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(18px);
 }
 
 .pos-header-actions {
@@ -32,11 +43,11 @@
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
-    padding: 0.65rem 0.85rem;
-    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    border-radius: 14px;
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    color: var(--text-on-primary);
     cursor: pointer;
     font-weight: 800;
     transition: var(--transition);
@@ -44,12 +55,12 @@
 
 .pos-cart-toggle .count-badge {
     position: absolute;
-    top: 4px;
+    top: 5px;
     right: 6px;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 900;
     background: var(--primary);
-    color: #fff;
+    color: var(--text-on-primary);
     border-radius: 999px;
     padding: 0 0.35rem;
 }
@@ -57,12 +68,12 @@
 .pos-cart-toggle .subtotal {
     font-size: 0.75rem;
     margin-left: 0.4rem;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 .pos-cart-toggle:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-xl);
 }
 
 .eyebrow {
@@ -92,87 +103,109 @@
 }
 
 .pos-header-clock div {
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-    padding: 0.45rem 0.65rem;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .pos-header-clock span {
     display: block;
     font-size: 0.72rem;
     text-transform: uppercase;
-    opacity: 0.8;
+    opacity: 0.85;
     font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .pos-header-clock strong {
-    font-size: 0.92rem;
-    font-weight: 800;
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #fff;
 }
 
 .pos-main-layout {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    justify-content: center;
+    padding: 1rem 0;
+    gap: 1.25rem;
     position: relative;
 }
 
 .pos-left-col {
-    flex: 1 1 100%;
+    width: 100%;
+    max-width: 1120px;
     min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.pos-right-col {
-    flex: 0 0 35%;
-    min-width: 0;
+@media (max-width: 1024px) {
+    .pos-main-layout {
+        flex-direction: column;
+        padding: 0.8rem 0;
+    }
 }
 
 .pos-card {
-    background: white;
-    border: 1px solid #e8edf5;
-    border-radius: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
     box-shadow: var(--shadow-md);
-    padding: 0.95rem;
+    padding: 1rem;
 }
 
 .pos-card-head {
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.8rem;
 }
 
 .pos-card-head h2 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 900;
     color: var(--text-main);
 }
 
 .pos-card-head p {
-    margin: 0.23rem 0 0;
+    margin: 0.25rem 0 0;
     color: var(--text-muted);
-    font-size: 0.86rem;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
 .pos-search-line {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr 200px;
-    gap: 0.6rem;
+    grid-template-columns: minmax(240px, 2.2fr) minmax(180px, 1fr) minmax(180px, 1fr);
+    gap: 0.75rem;
+    align-items: center;
 }
 
-.pos-search-line.pos-search-advanced {
-    grid-template-columns: 1.2fr 0.9fr 180px;
+@media (max-width: 960px) {
+    .pos-search-line {
+        grid-template-columns: 1fr;
+    }
+
+    .pos-search-line .pos-search-field,
+    .pos-search-line input,
+    .pos-search-line select {
+        width: 100%;
+    }
 }
 
 .pos-search-field {
-    border: 1.5px solid #dbe4ef;
-    border-radius: 12px;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 14px;
     display: flex;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.6rem;
     padding: 0 0.75rem;
+    background: var(--bg-card);
+}
+
+.pos-header-search {
+    width: min(520px, 100%);
+    max-width: 580px;
 }
 
 .pos-search-field svg {
@@ -188,55 +221,57 @@
     background: transparent;
     padding: 0.72rem 0;
     color: var(--text-main);
-    font-size: 0.92rem;
+    font-size: 0.93rem;
     font-weight: 600;
 }
 
 .pos-search-line select {
-    border: 1.5px solid #dbe4ef;
-    border-radius: 12px;
-    padding: 0 0.7rem;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 0 0.75rem;
+    background: var(--bg-card);
 }
 
 .pos-brand-input {
-    border: 1.5px solid #dbe4ef;
-    border-radius: 12px;
+    border: 1.5px solid var(--glass-border);
+    border-radius: 14px;
     padding: 0.72rem 0.8rem;
     font-weight: 600;
     color: var(--text-main);
+    background: var(--bg-card);
 }
 
 .pos-search-field:focus-within,
 .pos-search-line select:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .pos-medicine-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.7rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.9rem;
 }
 
 .pos-med-card {
-    background: white;
-    border: 1px solid #ecf1f8;
-    border-radius: 12px;
-    padding: 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 1.2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.6rem;
     transition: var(--transition);
 }
 
 .pos-med-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
 }
 
 .pos-med-card h4 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--text-main);
     font-weight: 900;
 }
@@ -244,7 +279,7 @@
 .pos-med-card p {
     margin: 0;
     color: var(--text-muted);
-    font-size: 0.82rem;
+    font-size: 0.86rem;
     font-weight: 700;
 }
 
@@ -252,7 +287,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .pos-med-brand {
@@ -262,14 +297,16 @@
 .pill {
     display: inline-flex;
     align-items: center;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 999px;
     font-size: 12px;
     font-weight: 800;
+    background: var(--pill-bg);
+    color: var(--pill-text);
 }
 
 .pill-green {
-    background: rgba(20, 184, 166, 0.12);
+    background: rgba(20, 184, 166, 0.18);
     color: #0f766e;
 }
 
@@ -277,11 +314,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 .pos-med-meta strong {
     color: var(--text-main);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 
 .pos-med-meta small {
@@ -290,22 +328,23 @@
 }
 
 .pos-med-card button {
-    border: 1px solid #dbeafe;
-    background: #eff6ff;
-    color: var(--primary);
-    border-radius: 10px;
-    padding: 0.58rem 0.7rem;
+    border: none;
+    background: linear-gradient(135deg, var(--primary) 0%, rgba(29, 78, 216, 0.9) 100%);
+    color: var(--text-on-primary);
+    border-radius: 14px;
+    padding: 0.62rem 0.85rem;
     font-weight: 800;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.3rem;
+    gap: 0.45rem;
+    transition: var(--transition);
 }
 
 .pos-med-card button:hover:not(:disabled) {
-    background: var(--primary);
-    color: var(--text-on-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
 
 .pos-med-card button:disabled {
@@ -316,7 +355,115 @@
 .pos-cart-card {
     position: sticky;
     top: 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 1.2rem;
+    box-shadow: var(--shadow-md);
 }
+
+.pos-cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    max-height: 460px;
+    overflow-y: auto;
+    margin: 0.75rem 0;
+    padding-right: 0.2rem;
+}
+
+.pos-cart-line {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.pos-cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.pos-cart-actions button {
+    width: 30px;
+    height: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-on-primary);
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pos-cart-actions button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.pos-cart-actions span {
+    min-width: 30px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--text-on-primary);
+}
+
+.remove-btn {
+    border: none;
+    background: transparent;
+    color: #ef4444;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.pos-summary-box {
+    margin-top: 0.85rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    background: var(--bg-card);
+    padding: 0.85rem;
+}
+
+.pos-summary-box.sticky {
+    position: sticky;
+    bottom: 1rem;
+    background: linear-gradient(180deg, rgba(14, 48, 94, 0.95), rgba(10, 21, 45, 0.9));
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    color: var(--text-on-primary);
+}
+
+.pos-summary-box p {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+    color: var(--text-soft);
+    font-weight: 700;
+}
+
+.pos-summary-box p strong {
+    color: var(--text-on-primary);
+}
+
+.pos-summary-box p.grand {
+    margin-top: 0.6rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.25);
+    padding-top: 0.55rem;
+}
+
+.pos-summary-box p.grand strong {
+    font-size: 1.06rem;
+}
+
 
 .pos-cart-table-wrap,
 .pos-invoice-table-wrap {
@@ -489,9 +636,9 @@
 }
 
 .pos-customer-box.slim input {
-    background: #0b1224;
-    border-color: rgba(255, 255, 255, 0.08);
-    color: #e2e8f0;
+    background: var(--bg-card);
+    border-color: var(--glass-border);
+    color: var(--text-main);
 }
 
 .pos-customer-box label {
@@ -559,10 +706,10 @@
 
 .pos-payment-box {
     margin-top: 0.74rem;
-    border: 1px solid #edf2f8;
+    border: 1px solid var(--glass-border);
     border-radius: 12px;
-    padding: 0.68rem;
-    background: #fcfdff;
+    padding: 0.9rem;
+    background: var(--bg-card);
 }
 
 .pos-payment-title {
@@ -850,28 +997,32 @@
 /* Compatibility for old checkout page */
 .checkout-table-card {
     border-radius: var(--radius-xl);
-    border: 1px solid #e9edf4;
+    border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-md);
-    background: #fff;
+    background: var(--bg-card);
 }
 
 .checkout-summary-card {
     position: sticky;
-    top: 1rem;
-    background: var(--bg-side);
-    color: var(--text-sidebar);
+    top: 1.1rem;
+    background: var(--bg-card);
+    color: var(--text-main);
     border-radius: var(--radius-xl);
     padding: 2rem;
     box-shadow: var(--shadow-premium);
+    border: 1px solid var(--glass-border);
     width: 100%;
+    max-width: 420px;
 }
 
 /* new layout helpers for checkout page */
 .checkout-container {
     display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 2rem;
+    grid-template-columns: 1.1fr 420px;
+    gap: 2.2rem;
     align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .checkout-items {

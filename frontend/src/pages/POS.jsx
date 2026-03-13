@@ -1,7 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { RiAddLine, RiSearchLine, RiShoppingCart2Line } from 'react-icons/ri';
-import toast from 'react-hot-toast';
+import { RiAddLine, RiSearchLine } from 'react-icons/ri';
 import api from '../services/api';
 import { useCart } from '../context/CartContext';
 import '../styles/pos.css';
@@ -17,14 +15,8 @@ const POS = () => {
     const [search, setSearch] = useState('');
     const [brand, setBrand] = useState('');
     const [category, setCategory] = useState('all');
-    const navigate = useNavigate();
 
-    const {
-        cart,
-        addToCart,
-        subtotal,
-        itemCount,
-    } = useCart();
+    const { addToCart } = useCart();
 
     const [categories, setCategories] = useState([]);
     const [medicines, setMedicines] = useState([]);
@@ -99,34 +91,14 @@ const POS = () => {
     };
 
 
-
     return (
         <div className="pos-pro-shell">
-            <header className="pos-header-bar">
-                <div className="pos-branding">
-                    <p className="eyebrow">Instant Checkout</p>
-                    <h1>Pharmacy POS</h1>
-                    <p>Modern, fast and pharmacist-friendly billing.</p>
-                </div>
-                <div className="pos-header-actions">
-                    <div className="pos-header-clock">
-                        <div><span>Date</span><strong>{new Date().toLocaleDateString('en-GB')}</strong></div>
-                        <div><span>Time</span><strong>{new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</strong></div>
-                    </div>
-                    <button type="button" className="pos-cart-toggle" onClick={() => navigate('/checkout')}>
-                        <RiShoppingCart2Line size={22} />
-                        <span className="count-badge">{itemCount}</span>
-                        <span className="subtotal">{formatCurrency(subtotal)}</span>
-                    </button>
-                </div>
-            </header>
-
             <section className="pos-main-layout">
                 <div className="pos-left-col">
                     <div className="pos-card">
                         <div className="pos-card-head">
                             <h2>Medicines</h2>
-                            <p>Search and add medicines to cart</p>
+                            <p>Search, filter and add items to cart</p>
                         </div>
 
                         <div className="pos-search-line pos-search-advanced">
@@ -135,15 +107,17 @@ const POS = () => {
                                 <input
                                     value={search}
                                     onChange={(e) => setSearch(e.target.value)}
-                                    placeholder="Search by name / generic"
+                                    placeholder="Search medicines, brand or category"
                                 />
                             </div>
+
                             <input
                                 className="pos-brand-input"
                                 value={brand}
                                 onChange={(e) => setBrand(e.target.value)}
                                 placeholder="Brand / Manufacturer"
                             />
+
                             <select value={category} onChange={(e) => setCategory(e.target.value)}>
                                 {categoryOptions.map((item) => (
                                     <option key={item._id} value={item._id}>
