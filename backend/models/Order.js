@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { getNextInvoiceNumber } = require('../utils/invoiceNumber');
 
 const OrderSchema = new mongoose.Schema({
     invoiceNumber: {
@@ -70,11 +71,10 @@ const OrderSchema = new mongoose.Schema({
 
 OrderSchema.pre('save', async function (next) {
     if (!this.invoiceNumber) {
-        const date = new Date();
-        const year = date.getFullYear().toString().slice(-2);
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const count = await mongoose.model('Order').countDocuments() + 1;
-        this.invoiceNumber = `ORD-${year}${month}-${count.toString().padStart(5, '0')}`;
+        this.invoiceNumber = await getNextInvoiceNumber({
+            prefix: 'ORD',
+            session: this.$session(),
+        });
     }
     next();
 });

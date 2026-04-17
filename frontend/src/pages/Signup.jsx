@@ -16,7 +16,6 @@ const Signup = () => {
         email: '',
         password: '',
         confirmPassword: '',
-        // role will always be pharmacist; it is not exposed in the form
         role: 'pharmacist',
     });
     const [errors, setErrors] = useState({});
@@ -133,6 +132,23 @@ const Signup = () => {
                                 />
                             </div>
                             {errors.email && <p className="field-error">{errors.email}</p>}
+                        </div>
+
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="role">Select Role</label>
+                            <div className="input-wrapper">
+                                <RiShieldUserLine className="input-icon" size={20} />
+                                <select
+                                    id="role"
+                                    name="role"
+                                    className="auth-input auth-select"
+                                    value={formData.role}
+                                    onChange={handleChange}
+                                >
+                                    <option value="pharmacist">Pharmacist</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div className="form-group">

@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { RiNotification3Line, RiShoppingCart2Line } from 'react-icons/ri';
+import React, { useMemo } from 'react';
+import { RiNotification3Line, RiShoppingCart2Line, RiMenu2Line } from 'react-icons/ri';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import api from '../../services/api';
@@ -16,10 +16,9 @@ const PAGE_TITLES = {
     '/settings': 'Settings',
 };
 
-const Topbar = () => {
+const Topbar = ({ toggleSidebar, isSidebarOpen }) => {
     const navigate = useNavigate();
     const location = useLocation();
-    const [search, setSearch] = useState('');
 
     // Fetch user info for the topbar
     const { data: apiUser } = useQuery({
@@ -61,46 +60,39 @@ const Topbar = () => {
 
     const { itemCount } = useCart();
 
-    const showSearch = location.pathname !== '/pos';
-
     return (
         <header className="topbar">
-            <div className="topbar-left">
-                <div className="topbar-title">
-                    <span className="topbar-title-main">{pageTitle}</span>
+            <div className="topbar-primary">
+                <div className="topbar-left">
+                    <button className="mobile-toggle-btn" onClick={toggleSidebar} aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}>
+                        <RiMenu2Line size={24} />
+                    </button>
+
+                    <div className="topbar-title">
+                        <span className="topbar-title-main">{pageTitle}</span>
+                    </div>
                 </div>
 
-                {showSearch && (
-                    <div className="topbar-search-wrapper">
-                        <input
-                            className="premium-search-input"
-                            placeholder="Search medicines, users, etc."
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
-                    </div>
-                )}
-            </div>
+                <div className="topbar-right">
+                    <button className="icon-btn" type="button" aria-label="Notifications">
+                        <RiNotification3Line size={20} />
+                    </button>
 
-            <div className="topbar-right">
-                <button className="icon-btn" type="button">
-                    <RiNotification3Line size={20} />
-                </button>
+                    <button className="icon-btn cart-btn" type="button" onClick={() => navigate('/cart')} aria-label="Open cart">
+                        <RiShoppingCart2Line size={20} />
+                        {itemCount > 0 && <span className="cart-badge">{itemCount}</span>}
+                    </button>
 
-                <button className="icon-btn cart-btn" type="button" onClick={() => navigate('/cart')}>
-                    <RiShoppingCart2Line size={20} />
-                    {itemCount > 0 && <span className="cart-badge">{itemCount}</span>}
-                </button>
-
-                <button type="button" className="user-profile-trigger" onClick={() => navigate('/profile')}>
-                    {avatarUrl ? (
-                        <img src={avatarUrl} alt="Avatar" className="user-avatar-small" />
-                    ) : (
-                        <div className="user-avatar-fallback">
-                            {user?.name?.charAt(0).toUpperCase() || 'A'}
-                        </div>
-                    )}
-                </button>
+                    <button type="button" className="user-profile-trigger" onClick={() => navigate('/profile')} aria-label="Open profile">
+                        {avatarUrl ? (
+                            <img src={avatarUrl} alt="Avatar" className="user-avatar-small" />
+                        ) : (
+                            <div className="user-avatar-fallback">
+                                {user?.name?.charAt(0).toUpperCase() || 'A'}
+                            </div>
+                        )}
+                    </button>
+                </div>
             </div>
         </header>
     );

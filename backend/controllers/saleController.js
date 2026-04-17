@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Sale = require('../models/Sale');
 const Medicine = require('../models/Medicine');
 const StockLog = require('../models/StockLog');
@@ -29,104 +30,111 @@ exports.createSale = asyncHandler(async (req, res, next) => {
         customerMobile
     } = req.body;
 
-    let subtotal = 0;
-    const saleItems = [];
+    const session = await mongoose.startSession();
+    session.startTransaction();
 
-    // Start transaction if possible, but for simplicity let's do it with basic logic first
-    // We need to fetch each medicine to get prices and update stock
+    try {
+        let subtotal = 0;
+        const saleItems = [];
 
-    for (const item of medicines) {
-        const medicine = await Medicine.findById(item.medicineId);
-        if (!medicine) {
-            return next(new ErrorResponse(`Medicine not found: ${item.medicineId}`, 404));
+        for (const item of medicines) {
+            const medicine = await Medicine.findById(item.medicineId).session(session);
+            if (!medicine) {
+                throw new ErrorResponse(`Medicine not found: ${item.medicineId}`, 404);
+            }
+
+            const availableStock = Number(medicine.stock ?? medicine.quantity ?? 0);
+
+            if (availableStock < item.quantity) {
+                throw new ErrorResponse(`Insufficient stock for ${medicine.name}. Available: ${availableStock}`, 400);
+            }
+
+            const sellingPrice = item.sellingPrice || medicine.sellingPrice || medicine.unitPrice;
+            const purchasePrice = medicine.purchasePrice || 0;
+            const itemTotal = sellingPrice * item.quantity;
+            const itemProfit = (sellingPrice - purchasePrice) * item.quantity;
+
+            saleItems.push({
+                medicine: medicine._id,
+                quantity: item.quantity,
+                sellingPrice,
+                purchasePrice,
+                itemTotal,
+                itemProfit
+            });
+
+            subtotal += itemTotal;
+
+            const previousStock = availableStock;
+            const updatedStock = availableStock - item.quantity;
+            medicine.stock = updatedStock;
+            medicine.quantity = updatedStock;
+            await medicine.save({ session });
+
+            await StockLog.create([{
+                medicine: medicine._id,
+                type: 'sale',
+                quantity: item.quantity,
+                previousStock,
+                newStock: updatedStock,
+                notes: 'Sale transaction',
+                changedBy: req.user ? req.user.id : null
+            }], { session });
         }
 
-        const availableStock = Number(medicine.stock ?? medicine.quantity ?? 0);
+        const normalizedDiscountValue = typeof discountValue !== 'undefined'
+            ? Number(discountValue) || 0
+            : Number(discount) || 0;
 
-        if (availableStock < item.quantity) {
-            return next(new ErrorResponse(`Insufficient stock for ${medicine.name}. Available: ${availableStock}`, 400));
+        let totalDiscount = 0;
+        if (discountType === 'percent') {
+            totalDiscount = (subtotal * normalizedDiscountValue) / 100;
+        } else {
+            totalDiscount = normalizedDiscountValue;
         }
 
-        const sellingPrice = item.sellingPrice || medicine.sellingPrice || medicine.unitPrice;
-        const purchasePrice = medicine.purchasePrice || 0;
-        const itemTotal = sellingPrice * item.quantity;
-        const itemProfit = (sellingPrice - purchasePrice) * item.quantity;
+        const parsedGstRate = Number(gstRate);
+        const normalizedGstRate = Number.isFinite(parsedGstRate) && parsedGstRate >= 0 ? parsedGstRate : 5;
+        const gst = Number((subtotal * (normalizedGstRate / 100)).toFixed(2));
+        const cgst = Number((gst / 2).toFixed(2));
+        const sgst = Number((gst / 2).toFixed(2));
+        const grandTotal = Math.max(0, Number((subtotal + gst - totalDiscount).toFixed(2)));
 
-        saleItems.push({
-            medicine: medicine._id,
-            quantity: item.quantity,
-            sellingPrice,
-            purchasePrice,
-            itemTotal,
-            itemProfit
+        const totalProfit = saleItems.reduce((acc, item) => acc + item.itemProfit, 0) - totalDiscount;
+
+        const sale = await Sale.create([{
+            medicines: saleItems,
+            subtotal,
+            gst,
+            gstRate: normalizedGstRate,
+            cgst,
+            sgst,
+            discount: totalDiscount,
+            discountType: discountType || 'amount',
+            discountValue: normalizedDiscountValue,
+            grandTotal,
+            totalProfit,
+            paymentMethod,
+            amountReceived: Number(amountReceived) || 0,
+            returnAmount: Number(returnAmount) || 0,
+            storeId: storeId || 'Main Store',
+            customerName: customerName || '',
+            customerMobile: customerMobile || '',
+            soldBy: req.user ? req.user.id : null
+        }], { session });
+
+        await session.commitTransaction();
+        session.endSession();
+
+        res.status(201).json({
+            success: true,
+            data: sale[0]
         });
-
-        subtotal += itemTotal;
-
-        // Update stock
-        const previousStock = availableStock;
-        const updatedStock = availableStock - item.quantity;
-        medicine.stock = updatedStock;
-        medicine.quantity = updatedStock;
-        await medicine.save();
-
-        // Log stock change
-        await StockLog.create({
-            medicine: medicine._id,
-            type: 'sale',
-            quantity: item.quantity,
-            previousStock,
-            newStock: updatedStock,
-            notes: `Sale transaction`,
-            changedBy: req.user ? req.user.id : null
-        });
+    } catch (error) {
+        await session.abortTransaction();
+        session.endSession();
+        next(error);
     }
-
-    const normalizedDiscountValue = typeof discountValue !== 'undefined'
-        ? Number(discountValue) || 0
-        : Number(discount) || 0;
-
-    let totalDiscount = 0;
-    if (discountType === 'percent') {
-        totalDiscount = (subtotal * normalizedDiscountValue) / 100;
-    } else {
-        totalDiscount = normalizedDiscountValue;
-    }
-
-    const parsedGstRate = Number(gstRate);
-    const normalizedGstRate = Number.isFinite(parsedGstRate) && parsedGstRate >= 0 ? parsedGstRate : 5;
-    const gst = Number((subtotal * (normalizedGstRate / 100)).toFixed(2));
-    const cgst = Number((gst / 2).toFixed(2));
-    const sgst = Number((gst / 2).toFixed(2));
-    const grandTotal = Math.max(0, Number((subtotal + gst - totalDiscount).toFixed(2)));
-
-    const totalProfit = saleItems.reduce((acc, item) => acc + item.itemProfit, 0) - totalDiscount;
-
-    const sale = await Sale.create({
-        medicines: saleItems,
-        subtotal,
-        gst,
-        gstRate: normalizedGstRate,
-        cgst,
-        sgst,
-        discount: totalDiscount,
-        discountType: discountType || 'amount',
-        discountValue: normalizedDiscountValue,
-        grandTotal,
-        totalProfit,
-        paymentMethod,
-        amountReceived: Number(amountReceived) || 0,
-        returnAmount: Number(returnAmount) || 0,
-        storeId: storeId || 'Main Store',
-        customerName: customerName || '',
-        customerMobile: customerMobile || '',
-        soldBy: req.user ? req.user.id : null
-    });
-
-    res.status(201).json({
-        success: true,
-        data: sale
-    });
 });
 
 // @desc    Get all sales

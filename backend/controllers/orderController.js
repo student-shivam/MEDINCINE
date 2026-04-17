@@ -128,7 +128,7 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
 // @access Protected (admin, pharmacist)
 exports.getOrder = asyncHandler(async (req, res, next) => {
     const order = await Order.findById(req.params.id)
-        .populate('medicines.medicine', 'name brand')
+        .populate('medicines.medicine', 'name brand genericName batchNumber expiryDate')
         .populate('createdBy', 'name email');
 
     if (!order) {

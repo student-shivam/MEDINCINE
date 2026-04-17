@@ -14,7 +14,7 @@ const {
     updateNotificationSettings,
     updateSystemPreferences,
 } = require('../controllers/userController');
-const { protect, authorize } = require('../middleware/authMiddleware');
+const { protect, authorizeRoles } = require('../middleware/authMiddleware');
 
 const router = express.Router({ mergeParams: true });
 
@@ -27,7 +27,7 @@ router.put('/change-password', changeMyPassword);
 router.put('/update-notifications', updateNotificationSettings);
 router.put('/update-preferences', updateSystemPreferences);
 
-router.use(authorize('admin'));
+router.use(authorizeRoles('admin'));
 
 router.route('/')
     .get(getUsers)

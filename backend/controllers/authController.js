@@ -14,11 +14,7 @@ exports.register = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse(error.details[0].message, 400));
     }
 
-    const { name, email, password } = req.body;
-    // for public registration we do not trust the client to assign roles;
-    // every new account is a pharmacist by default. an admin user should be
-    // created either by the seeded default admin or via the admin panel.
-    const role = 'pharmacist';
+    const { name, email, password, role } = req.body;
 
     // Check if user exists
     const userExists = await User.findOne({ email });
@@ -84,7 +80,7 @@ const sendTokenResponse = (user, statusCode, res) => {
 
     let token;
     try {
-        token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
             expiresIn: process.env.JWT_EXPIRE,
         });
     } catch (err) {

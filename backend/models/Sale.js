@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { getNextInvoiceNumber } = require('../utils/invoiceNumber');
 
 const SaleSchema = new mongoose.Schema({
     invoiceNumber: {
@@ -120,11 +121,10 @@ const SaleSchema = new mongoose.Schema({
 // Auto-generate Invoice Number
 SaleSchema.pre('save', async function (next) {
     if (!this.invoiceNumber) {
-        const date = new Date();
-        const year = date.getFullYear().toString().slice(-2);
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const count = await mongoose.model('Sale').countDocuments() + 1;
-        this.invoiceNumber = `INV-${year}${month}-${count.toString().padStart(5, '0')}`;
+        this.invoiceNumber = await getNextInvoiceNumber({
+            prefix: 'INV',
+            session: this.$session(),
+        });
     }
     next();
 });

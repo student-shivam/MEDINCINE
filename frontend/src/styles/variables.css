@@ -156,8 +156,16 @@
   --sidebar-w: 280px;
   --topbar-h: 56px;
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-blur: blur(20px);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-blur: blur(12px);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+  /* Scrollbar Tokens */
+  --sb-track: transparent;
+  --sb-thumb: rgba(148, 163, 184, 0.3);
+  --sb-thumb-hover: rgba(148, 163, 184, 0.5);
+  --sb-size: 8px;
 
   /* Typography Scale */
   --fs-xs: 0.75rem;
@@ -601,16 +609,58 @@ body.dark-mode {
   --icon-main: #e2e8f0;
   --icon-muted: #9aa6b2;
   --icon-bg: #111827;
-  --glass-border: rgba(148, 163, 184, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(17, 25, 45, 0.6);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --glass-blur: blur(12px);
   --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.4);
   --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.45);
   --shadow-premium: 0 30px 50px rgba(0, 0, 0, 0.5);
 
+  /* Scrollbar Tokens */
+  --sb-size: 8px;
+  --sb-track: transparent;
+  --sb-thumb: rgba(148, 163, 184, 0.3);
+  --sb-thumb-hover: rgba(148, 163, 184, 0.5);
+
   /* Pill / badge defaults for dark mode */
   --pill-bg: rgba(255, 255, 255, 0.12);
   --pill-text: var(--text-on-primary);
+}
+
+body.dark-mode {
+  --sb-thumb: rgba(255, 255, 255, 0.1);
+  --sb-thumb-hover: rgba(255, 255, 255, 0.2);
+}
+
+/* Global Scrollbar Styles */
+::-webkit-scrollbar {
+  width: var(--sb-size);
+  height: var(--sb-size);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sb-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sb-thumb-hover);
+  background-clip: content-box;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
 }
 
 
@@ -1087,7 +1137,7 @@ body.dark-mode .inline-add-btn:hover {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .sidebar {
+  .app-layout > .sidebar {
     display: none;
   }
 

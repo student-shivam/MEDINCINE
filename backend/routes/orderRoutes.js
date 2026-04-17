@@ -1,5 +1,5 @@
 const express = require('express');
-const { protect, authorize } = require('../middleware/authMiddleware');
+const { protect, authorizeRoles } = require('../middleware/authMiddleware');
 const { createOrder, getOrder } = require('../controllers/orderController');
 
 const router = express.Router();
@@ -7,7 +7,7 @@ const router = express.Router();
 // Public route for invoice viewing
 router.get('/:id', getOrder);
 
-router.use(protect, authorize('admin', 'pharmacist'));
+router.use(protect, authorizeRoles('admin', 'pharmacist'));
 
 router.route('/')
     .post(createOrder);

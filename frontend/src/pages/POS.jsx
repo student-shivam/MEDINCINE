@@ -101,30 +101,45 @@ const POS = () => {
                             <p>Search, filter and add items to cart</p>
                         </div>
 
-                        <div className="pos-search-line pos-search-advanced">
-                            <div className="pos-search-field">
-                                <RiSearchLine size={18} />
-                                <input
-                                    value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    placeholder="Search medicines, brand or category"
-                                />
+                        <div className="pos-search-advanced">
+                            <div className="pos-search-row">
+                                <div className="pos-search-field pos-search-row-main">
+                                    <RiSearchLine size={20} color="var(--primary-light)" />
+                                    <input
+                                        value={search}
+                                        onChange={(e) => setSearch(e.target.value)}
+                                        placeholder="Search by medicine name, brand or category..."
+                                        className="premium-search-input"
+                                    />
+                                </div>
+                                <div className="pos-brand-field">
+                                    <input
+                                        className="premium-search-input"
+                                        style={{ paddingLeft: '1.25rem' }}
+                                        value={brand}
+                                        onChange={(e) => setBrand(e.target.value)}
+                                        placeholder="Filter by brand"
+                                    />
+                                </div>
                             </div>
-
-                            <input
-                                className="pos-brand-input"
-                                value={brand}
-                                onChange={(e) => setBrand(e.target.value)}
-                                placeholder="Brand / Manufacturer"
-                            />
-
-                            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                            
+                            <div className="pos-category-pills">
                                 {categoryOptions.map((item) => (
-                                    <option key={item._id} value={item._id}>
+                                    <button
+                                        key={item._id}
+                                        type="button"
+                                        onClick={() => setCategory(item._id)}
+                                        className={`pos-category-pill ${category === item._id ? 'active' : ''}`}
+                                        style={{
+                                            borderColor: category === item._id ? 'var(--primary)' : 'var(--glass-border)',
+                                            background: category === item._id ? 'rgba(37, 99, 235, 0.1)' : 'rgba(255, 255, 255, 0.03)',
+                                            color: category === item._id ? 'var(--primary-light)' : 'var(--text-soft)',
+                                        }}
+                                    >
                                         {item.name}
-                                    </option>
+                                    </button>
                                 ))}
-                            </select>
+                            </div>
                         </div>
                     </div>
 
@@ -144,23 +159,34 @@ const POS = () => {
                                 </div>
                             )}
                             {!isLoading && !isError && filteredMedicines.map((medicine) => (
-                                <article className="pos-med-card" key={medicine._id}>
+                                <article className="pos-med-card checkout-card" key={medicine._id} style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem', transition: 'all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1)' }}>
                                     <div className="pos-med-card-head">
-                                        <h4>{medicine.name}</h4>
-                                        <span className="pill pill-green">{medicine.categoryName}</span>
+                                        <div className="pos-title-block">
+                                            <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 900, color: 'var(--text-heading)', letterSpacing: '-0.3px' }}>{medicine.name}</h4>
+                                            <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--text-soft)', display: 'block', marginTop: '4px' }}>{medicine.brand || 'General'}</span>
+                                        </div>
+                                        <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-light)', background: 'rgba(37, 99, 235, 0.08)', padding: '4px 10px', borderRadius: '8px', border: '1px solid rgba(37, 99, 235, 0.1)' }}>
+                                            {medicine.categoryName}
+                                        </span>
                                     </div>
-                                    <p className="pos-med-brand">{medicine.brand || '—'} • Stock {medicine.quantity}</p>
-                                    <div className="pos-med-meta">
+
+                                    <div className="pos-card-price-row">
                                         <div>
-                                            <strong>{formatCurrency(medicine.unitPrice)}</strong>
-                                            <small>MRP</small>
+                                            <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-soft)', textTransform: 'uppercase' }}>Price</div>
+                                            <div style={{ fontSize: '1.4rem', fontWeight: 950, color: '#fff' }}>{formatCurrency(medicine.unitPrice)}</div>
+                                            <div style={{ fontSize: '0.7rem', fontWeight: 700, color: medicine.quantity > 5 ? 'var(--text-soft)' : '#ef4444', marginTop: '4px' }}>
+                                                {medicine.quantity > 0 ? `${medicine.quantity} in stock` : 'Out of stock'}
+                                            </div>
                                         </div>
                                         <button
                                             type="button"
                                             onClick={() => handleAddToCart(medicine)}
                                             disabled={medicine.quantity < 1}
+                                            className="generate-btn-premium"
+                                            style={{ height: '44px', minWidth: '100px', fontSize: '14px', borderRadius: '14px', margin: 0 }}
                                         >
-                                            <RiAddLine /> Add
+                                            <RiAddLine size={20} />
+                                            <span>Add</span>
                                         </button>
                                     </div>
                                 </article>

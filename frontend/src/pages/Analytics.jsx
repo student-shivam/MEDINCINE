@@ -22,16 +22,16 @@ const Analytics = () => {
     };
 
     return (
-        <div className="page-container">
-            <div className="page-header">
-                <div>
-                    <h1 className="page-title">Sales Reports</h1>
-                    <p className="page-subtitle">Track sales, cost, and profit</p>
+        <div className="analytics-page fade-in">
+            <div className="page-header analytics-page-header">
+                <div className="analytics-page-header-copy">
+                    <h1 className="page-title analytics-page-title">Sales Reports</h1>
+                    <p className="page-subtitle analytics-page-subtitle">Track sales, cost, and profit</p>
                 </div>
             </div>
 
-            <div className="stats-grid">
-                <div className="stat-card">
+            <div className="stats-grid analytics-stats-grid">
+                <div className="stat-card analytics-stat-card">
                     <div className="stat-icon-wrapper revenue">
                         <RiMoneyDollarCircleLine size={24} />
                     </div>
@@ -41,7 +41,7 @@ const Analytics = () => {
                     </div>
                 </div>
 
-                <div className="stat-card">
+                <div className="stat-card analytics-stat-card">
                     <div className="stat-icon-wrapper stocks">
                         <RiHandCoinLine size={24} />
                     </div>
@@ -51,7 +51,7 @@ const Analytics = () => {
                     </div>
                 </div>
 
-                <div className="stat-card">
+                <div className="stat-card analytics-stat-card">
                     <div className="stat-icon-wrapper expiry">
                         <RiLineChartLine size={24} />
                     </div>
@@ -63,7 +63,7 @@ const Analytics = () => {
                     </div>
                 </div>
 
-                <div className="stat-card">
+                <div className="stat-card analytics-stat-card">
                     <div className="stat-icon-wrapper">
                         <RiHistoryLine size={24} />
                     </div>

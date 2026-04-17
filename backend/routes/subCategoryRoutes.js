@@ -5,7 +5,7 @@ const {
     updateSubCategory,
     deleteSubCategory,
 } = require('../controllers/subCategoryController');
-const { protect, authorize } = require('../middleware/authMiddleware');
+const { protect, authorizeRoles } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
@@ -13,10 +13,10 @@ router.use(protect);
 
 router.route('/')
     .get(getSubCategories)
-    .post(authorize('admin'), createSubCategory);
+    .post(authorizeRoles('admin'), createSubCategory);
 
 router.route('/:id')
-    .put(authorize('admin'), updateSubCategory)
-    .delete(authorize('admin'), deleteSubCategory);
+    .put(authorizeRoles('admin'), updateSubCategory)
+    .delete(authorizeRoles('admin'), deleteSubCategory);
 
 module.exports = router;

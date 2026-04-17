@@ -1,24 +1,34 @@
-﻿import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
 import {
     RiArrowLeftLine,
-    RiPrinterLine
+    RiPrinterLine,
 } from 'react-icons/ri';
 import api from '../services/api';
 import PublicNavbar from '../components/layout/PublicNavbar';
 
-const formatCurrency = (value) => new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    minimumFractionDigits: 2,
-}).format(Number(value || 0));
+const formatCurrency = (value) =>
+    new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        minimumFractionDigits: 2,
+    }).format(Number(value || 0));
+
+const formatDate = (value) => {
+    if (!value) return '--';
+    return new Date(value).toLocaleDateString('en-GB');
+};
+
+const formatTime = (value) => {
+    if (!value) return '--';
+    return new Date(value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+};
 
 const InvoicePreview = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const invoiceRef = useRef();
+    const invoiceRef = useRef(null);
 
     const { data: order, isLoading } = useQuery({
         queryKey: ['order-invoice', id],
@@ -27,121 +37,179 @@ const InvoicePreview = () => {
                 const response = await api.get(`/orders/${id}`);
                 return response.data.data;
             } catch (err) {
-                // Fallback to legacy sales endpoint
-                try {
-                    const response = await api.get(`/sales/${id}`);
-                    const sale = response.data.data;
-                    // Normalize Sale to match Order structure
-                    return {
-                        ...sale,
-                        total: sale.grandTotal || sale.total,
-                        phone: sale.customerMobile || sale.phone,
-                        tax: sale.gst || sale.tax,
-                        medicines: sale.medicines?.map(m => ({
-                            name: m.name || m.medicine?.name || 'Medicine',
-                            quantity: m.quantity,
-                            price: m.sellingPrice || m.price || 0
-                        })) || []
-                    };
-                } catch (saleErr) {
-                    throw err;
-                }
+                const response = await api.get(`/sales/${id}`);
+                const sale = response.data.data;
+                return {
+                    ...sale,
+                    subtotal: sale.subtotal || 0,
+                    tax: sale.gst || sale.tax || 0,
+                    taxRate: sale.gstRate || sale.taxRate || 0,
+                    total: sale.grandTotal || sale.total || 0,
+                    phone: sale.customerMobile || sale.phone || '',
+                    customerName: sale.customerName || 'Walk-in Customer',
+                    medicines:
+                        sale.medicines?.map((item) => ({
+                            name: item.name || item.medicine?.name || 'Medicine',
+                            quantity: item.quantity || 0,
+                            price: item.sellingPrice || item.price || 0,
+                            batchNumber: item.medicine?.batchNumber || '',
+                            expiryDate: item.medicine?.expiryDate || '',
+                        })) || [],
+                };
             }
-        }
+        },
     });
 
-    const handlePrint = () => {
-        window.print();
-    };
-
-    // automatically print when order data arrives
-    React.useEffect(() => {
-        if (order) {
-            setTimeout(() => window.print(), 300);
-        }
+    const invoiceItems = useMemo(() => {
+        if (!order?.medicines) return [];
+        return order.medicines.map((item, index) => {
+            const medicine = item.medicine || {};
+            const price = Number(item.price || item.sellingPrice || 0);
+            const quantity = Number(item.quantity || 0);
+            return {
+                serial: index + 1,
+                name: item.name || medicine.name || 'Medicine',
+                batchNumber: medicine.batchNumber || item.batchNumber || '--',
+                expiryDate: formatDate(medicine.expiryDate || item.expiryDate),
+                quantity,
+                mrp: price,
+                amount: price * quantity,
+            };
+        });
     }, [order]);
 
+    const discountAmount = useMemo(() => {
+        const subtotal = Number(order?.subtotal || 0);
+        const tax = Number(order?.tax || 0);
+        const total = Number(order?.total || 0);
+        const discount = subtotal + tax - total;
+        return discount > 0 ? discount : 0;
+    }, [order]);
 
-    if (isLoading) return <div className="loading-container"><div className="spinner"></div></div>;
+    if (isLoading) {
+        return (
+            <div className="loading-container">
+                <div className="spinner"></div>
+            </div>
+        );
+    }
 
-    if (!order) return <div className="error-container"><p>Bill not found.</p></div>;
+    if (!order) {
+        return (
+            <div className="error-container">
+                <p>Bill not found.</p>
+            </div>
+        );
+    }
 
     return (
-        <div className="public-page-wrapper">
+        <div className="public-page-wrapper invoice-screen">
             <PublicNavbar />
-            <div className="public-content">
-                <div className="invoice-preview-wrapper fade-in">
-                    <div className="invoice-actions no-print">
-                        <button onClick={() => navigate('/pos')} className="premium-btn ghost">
-                            <RiArrowLeftLine /> New Bill
-                        </button>
-                        <div style={{ display: 'flex', gap: '1rem' }}>
-                            <button onClick={handlePrint} className="premium-btn ghost">
-                                <RiPrinterLine /> Print
-                            </button>
-                        </div>
-                    </div>
+            <div className="public-content invoice-screen-content">
+                <div className="invoice-controls no-print">
+                    <button onClick={() => navigate('/pos')} className="back-pos-btn invoice-control-btn">
+                        <RiArrowLeftLine />
+                        <span>New Transaction</span>
+                    </button>
+                    <button onClick={() => window.print()} className="generate-btn-premium invoice-print-btn">
+                        <RiPrinterLine size={18} />
+                        <span>Print Bill</span>
+                    </button>
+                </div>
 
-                    <div id="invoice" className="invoice-document" ref={invoiceRef} style={{ color: '#111' }}>
-                        <div style={{ textAlign: 'center', marginBottom: '0.5rem', color: '#1e3a8a' }}>
-                            <img
-                                src="/logo.png"
-                                alt="Pharmacy Logo"
-                                style={{
-                                    width: '40px',
-                                    height: '40px',
-                                    marginBottom: '0.2rem',
-                                    filter: 'invert(22%) sepia(80%) saturate(500%) hue-rotate(189deg)'
-                                }}
-                            />
-                            <div style={{ fontWeight: 800, fontSize: '14px' }}>IndiCorp Pharmacy</div>
-                            <div style={{ fontSize: '12px', color: '#222' }}>123 Health Avenue, City Center</div>
-                            <div style={{ fontSize: '12px', marginBottom: '0.3rem', color: '#222' }}>Phone: +91 90000 00000</div>
-                            <hr />
-                        </div>
-                        <div style={{ fontSize: '12px', lineHeight: 1.4 }}>
-                            <div>Invoice #: {order.invoiceNumber}</div>
-                            <div>Date: {new Date(order.createdAt).toLocaleDateString()}</div>
-                            <div style={{ marginBottom: '0.3rem' }}>Time: {new Date(order.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
-                            <div>Customer: {order.customerName || 'Walk-in Customer'}</div>
-                            <div>Phone: {order.phone || '-'}</div>
-                            <hr />
-                        </div>
+                <div className="invoice-print-page">
+                    <div id="invoice-section" className="invoice-print-stage">
+                    <div id="invoice" className="medical-invoice-sheet" ref={invoiceRef}>
+                        <header className="medical-invoice-header">
+                            <h1 className="medical-shop-name">Ravindra Medicine Inventory</h1>
+                            <p className="medical-shop-meta">BBD University, Lucknow</p>
+                            <p className="medical-shop-meta">Mobile: +91 7707876498 | GSTIN: --</p>
+                            <p className="medical-shop-meta">Drug License No: DL-20B-123456 | DL-21B-654321</p>
+                        </header>
 
-                        <div style={{ fontSize: '12px', lineHeight: 1.4, marginTop: '0.5rem', color: '#000' }}>
-                            <table style={{ width: '100%', fontFamily: 'monospace', fontSize: '12px', color: '#000' }}>
+                        <section className="medical-bill-info-grid">
+                            <div className="medical-bill-info-box">
+                                <h2 className="medical-box-title">Bill Details</h2>
+                                <p><strong>Bill No:</strong> {order.invoiceNumber || '--'}</p>
+                                <p><strong>Date:</strong> {formatDate(order.createdAt)}</p>
+                                <p><strong>Time:</strong> {formatTime(order.createdAt)}</p>
+                            </div>
+
+                            <div className="medical-bill-info-box">
+                                <h2 className="medical-box-title">Customer Details</h2>
+                                <p><strong>Customer:</strong> {order.customerName || 'Walk-in Customer'}</p>
+                                <p><strong>Doctor:</strong> {order.doctorName || '--'}</p>
+                                <p><strong>Phone:</strong> {order.phone || '--'}</p>
+                            </div>
+                        </section>
+
+                        <section className="medical-invoice-table-section">
+                            <table className="medical-invoice-table">
                                 <thead>
                                     <tr>
-                                        <th style={{ textAlign: 'left', color: '#000' }}>Item</th>
-                                        <th style={{ textAlign: 'center', color: '#000' }}>Qty</th>
-                                        <th style={{ textAlign: 'right', color: '#000' }}>Price</th>
-                                        <th style={{ textAlign: 'right', color: '#000' }}>Total</th>
+                                        <th className="col-sn">S.No</th>
+                                        <th className="col-name">Medicine Name</th>
+                                        <th className="col-batch">Batch No</th>
+                                        <th className="col-expiry">Expiry Date</th>
+                                        <th className="col-qty">Quantity</th>
+                                        <th className="col-mrp">MRP</th>
+                                        <th className="col-amount">Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {order.medicines.map((item, idx) => (
-                                        <tr key={idx}>
-                                            <td>{item.name}</td>
-                                            <td style={{ textAlign: 'center' }}>{item.quantity}</td>
-                                            <td style={{ textAlign: 'right' }}>{formatCurrency(item.price)}</td>
-                                            <td style={{ textAlign: 'right' }}>{formatCurrency(item.price * item.quantity)}</td>
+                                    {invoiceItems.map((item) => (
+                                        <tr key={`${item.serial}-${item.name}`}>
+                                            <td>{item.serial}</td>
+                                            <td className="medical-text-left">{item.name}</td>
+                                            <td>{item.batchNumber}</td>
+                                            <td>{item.expiryDate}</td>
+                                            <td>{item.quantity}</td>
+                                            <td>{formatCurrency(item.mrp)}</td>
+                                            <td>{formatCurrency(item.amount)}</td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
-                            <hr />
-                            <div style={{ textAlign: 'right' }}>
-                                <div>Subtotal: {formatCurrency(order.subtotal)}</div>
-                                <div>Tax: {formatCurrency(order.tax)}</div>
-                                <div style={{ fontWeight: 800 }}>Total: {formatCurrency(order.total)}</div>
+                        </section>
+
+                        <section className="medical-summary-signature">
+                            <div className="medical-notes-box">
+                                <h2 className="medical-box-title">Important Notes</h2>
+                                <p>Medicines once sold will not be taken back.</p>
+                                <p>Keep medicines out of reach of children.</p>
                             </div>
-                        </div>
-                        <div style={{ textAlign: 'center', marginTop: '0.8rem', fontSize: '12px', lineHeight: 1.4 }}>
-                            ---
-                            <div>Thank you for visiting</div>
-                            <div>Get well soon!</div>
-                            ---
-                        </div>
+
+                            <div className="medical-summary-block">
+                                <div className="medical-summary-box">
+                                    <div className="medical-summary-row">
+                                        <span>Subtotal</span>
+                                        <span>{formatCurrency(order.subtotal)}</span>
+                                    </div>
+                                    <div className="medical-summary-row">
+                                        <span>Discount</span>
+                                        <span>{formatCurrency(discountAmount)}</span>
+                                    </div>
+                                    <div className="medical-summary-row">
+                                        <span>GST</span>
+                                        <span>{formatCurrency(order.tax)}</span>
+                                    </div>
+                                    <div className="medical-summary-row medical-summary-row-total">
+                                        <span>Grand Total</span>
+                                        <span>{formatCurrency(order.total)}</span>
+                                    </div>
+                                </div>
+
+                                <div className="medical-signature-section">
+                                    <div className="medical-signature-line"></div>
+                                    <p>Authorized Signatory (Ravindra)</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <footer className="medical-invoice-footer">
+                            <span>Developed by Ravindra Yadav</span>
+                        </footer>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -150,5 +218,3 @@ const InvoicePreview = () => {
 };
 
 export default InvoicePreview;
-
-

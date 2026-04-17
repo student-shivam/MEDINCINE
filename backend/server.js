@@ -1,4 +1,5 @@
 const express = require('express');
+const http = require('http');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -21,6 +22,9 @@ const userRoutes = require('./routes/userRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const subCategoryRoutes = require('./routes/subCategoryRoutes');
+const notificationRoutes = require('./routes/notificationRoutes');
+const socket = require('./utils/socket');
+const startNotificationCron = require('./utils/cronJobs');
 
 const app = express();
 
@@ -52,6 +56,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/subcategories', subCategoryRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 
 app.use(errorHandler);
@@ -61,6 +66,9 @@ app.get('/', (req, res) => {
     res.send('Medicine Inventory API is running...');
 });
 
+
+const server = http.createServer(app);
+socket.init(server);
 
 const PORT = process.env.PORT || 5000;
 
@@ -97,7 +105,9 @@ const startServer = async () => {
             console.log('👤 Default admin account created: admin@example.com / admin123@');
         }
 
-        app.listen(PORT, () => {
+        startNotificationCron();
+
+        server.listen(PORT, () => {
             console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
         });
     } catch (err) {
@@ -107,3 +117,15 @@ const startServer = async () => {
 };
 
 startServer();
+
+process.on('unhandledRejection', (error) => {
+    console.error('Unhandled promise rejection:', error);
+});
+
+process.on('uncaughtException', (error) => {
+    console.error('Uncaught exception:', error);
+
+    server.close(() => {
+        process.exit(1);
+    });
+});

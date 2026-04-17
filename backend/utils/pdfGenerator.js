@@ -45,8 +45,8 @@ exports.generateSalePDF = (sale, res) => {
         .font('Helvetica-Bold')
         .text('Billed By:', 300, customerInformationTop)
         .font('Helvetica')
-        .text(sale.soldBy.name, 300, customerInformationTop + 15)
-        .text(sale.soldBy.email, 300, customerInformationTop + 30)
+        .text(sale.soldBy?.name || 'N/A', 300, customerInformationTop + 15)
+        .text(sale.soldBy?.email || '', 300, customerInformationTop + 30)
         .moveDown();
 
     generateHr(doc, 252);
@@ -73,7 +73,7 @@ exports.generateSalePDF = (sale, res) => {
         generateTableRow(
             doc,
             position,
-            item.medicine.name,
+            item.medicine?.name || 'Unknown Item',
             `INR ${item.sellingPrice}`,
             item.quantity,
             `INR ${item.itemTotal}`

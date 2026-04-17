@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import {
     RiCapsuleLine,
@@ -173,13 +173,13 @@ const Medicines = () => {
             </div>
 
             {medicines.length === 0 ? (
-                <div className="empty-chart-state" style={{ height: '360px', flexDirection: 'column', gap: '1.5rem' }}>
-                    <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '50%', boxShadow: '0 10px 20px rgba(0,0,0,0.05)' }}>
-                        <RiInboxLine size={64} color="var(--text-muted)" />
+                <div className="premium-empty-state">
+                    <div className="empty-state-icon-wrapper">
+                        <RiInboxLine size={64} />
                     </div>
-                    <div style={{ textAlign: 'center' }}>
-                        <h3 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, color: 'var(--text-main)' }}>No medicines found</h3>
-                        <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', fontSize: 'var(--fs-base)' }}>Try changing your filters</p>
+                    <div className="empty-state-text-wrapper">
+                        <h3 className="empty-state-title">No medicines found</h3>
+                        <p className="empty-state-subtitle">Try changing your filters</p>
                     </div>
                 </div>
             ) : (

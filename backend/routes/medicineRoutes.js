@@ -14,7 +14,7 @@ const {
     exportCSV,
     uploadMedicineImage,
 } = require('../controllers/medicineController');
-const { protect, authorize } = require('../middleware/authMiddleware');
+const { protect, authorizeRoles } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
@@ -28,18 +28,18 @@ router.get('/stats', getStats);
 router.get('/low-stock', getLowStock);
 router.get('/expired', getExpired);
 router.get('/expiring-soon', getExpiringSoon);
-router.get('/export/csv', authorize('admin'), exportCSV);
+router.get('/export/csv', authorizeRoles('admin'), exportCSV);
 
 // CRUD
-router.post('/', authorize('admin'), uploadMedicineImage.single('image'), createMedicine);
+router.post('/', authorizeRoles('admin'), uploadMedicineImage.single('image'), createMedicine);
 
 router.route('/:id')
     .get(getMedicine)
-    .put(authorize('admin'), uploadMedicineImage.single('image'), updateMedicine)
-    .delete(authorize('admin'), deleteMedicine);
+    .put(authorizeRoles('admin'), uploadMedicineImage.single('image'), updateMedicine)
+    .delete(authorizeRoles('admin'), deleteMedicine);
 
 // Stock operations (admin + pharmacist)
-router.patch('/:id/increase', authorize('admin', 'pharmacist'), increaseStock);
-router.patch('/:id/reduce', authorize('admin', 'pharmacist'), reduceStock);
+router.patch('/:id/increase', authorizeRoles('admin', 'pharmacist'), increaseStock);
+router.patch('/:id/reduce', authorizeRoles('admin', 'pharmacist'), reduceStock);
 
 module.exports = router;

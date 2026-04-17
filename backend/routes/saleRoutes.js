@@ -8,15 +8,15 @@ const {
     getPDFInvoice,
     getSale
 } = require('../controllers/saleController');
-const { protect, authorize } = require('../middleware/authMiddleware');
+const { protect, authorizeRoles } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
 router.route('/')
     .get(protect, getSales)
-    .post(protect, authorize('admin', 'pharmacist'), createSale);
+    .post(protect, authorizeRoles('admin', 'pharmacist'), createSale);
 
-router.get('/analytics', protect, authorize('admin'), getSalesAnalytics);
+router.get('/analytics', protect, authorizeRoles('admin'), getSalesAnalytics);
 router.get('/invoice/:invoiceNumber', getSaleByInvoiceNumber); // Public for invoice viewing
 router.get('/:id', getSale); // Public for fetching by ID
 router.get('/:id/invoice', downloadInvoice); // Public download

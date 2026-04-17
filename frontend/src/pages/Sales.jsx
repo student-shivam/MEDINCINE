@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import api from '../services/api';
-import { RiDownloadLine, RiSearchLine, RiFileTextLine, RiCalendarLine, RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import {
+    RiDownloadLine,
+    RiSearchLine,
+    RiFileTextLine,
+    RiCalendarLine,
+    RiArrowLeftSLine,
+    RiArrowRightSLine,
+} from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -20,11 +27,11 @@ const Sales = () => {
                 limit,
                 invoiceNumber: invoiceSearch,
                 startDate,
-                endDate
+                endDate,
             };
             const response = await api.get('/sales', { params });
             return response.data;
-        }
+        },
     });
 
     const sales = data?.data || [];
@@ -33,7 +40,7 @@ const Sales = () => {
     const handleDownload = async (id, invoiceNumber) => {
         try {
             const response = await api.get(`/sales/${id}/pdf`, {
-                responseType: 'blob'
+                responseType: 'blob',
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
@@ -61,17 +68,16 @@ const Sales = () => {
     }
 
     return (
-        <div className="page-container" style={{ padding: '2.5rem' }}>
-            <div className="page-header" style={{ marginBottom: '2.5rem' }}>
-                <div>
-                    <h1 className="stats-card-value" style={{ fontSize: '2.5rem', color: 'var(--text-main)', margin: 0, letterSpacing: '-1px' }}>Sales</h1>
-                    <p style={{ color: 'var(--text-muted)', fontWeight: 600, fontSize: '1rem' }}>View and manage all medicine sales</p>
+        <div className="sales-page fade-in">
+            <div className="page-header sales-page-header">
+                <div className="sales-page-header-copy">
+                    <h1 className="sales-page-title">Sales</h1>
+                    <p className="sales-page-subtitle">View and manage all medicine sales</p>
                 </div>
             </div>
 
-            {/* Filter Strip */}
-            <div className="premium-filter-strip" style={{ marginBottom: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <div className="premium-search-box" style={{ flex: 1, minWidth: '300px', marginBottom: 0 }}>
+            <div className="premium-filter-strip sales-filter-strip">
+                <div className="premium-search-box sales-search-box">
                     <RiSearchLine className="search-box-icon" />
                     <input
                         type="text"
@@ -84,13 +90,13 @@ const Sales = () => {
                         }}
                     />
                 </div>
-                <div className="filter-group" style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-                    <div className="premium-search-box" style={{ width: '200px', marginBottom: 0 }}>
+
+                <div className="filter-group sales-filter-group">
+                    <div className="premium-search-box sales-date-box">
                         <RiCalendarLine className="search-box-icon" />
                         <input
                             type="date"
-                            className="premium-search-input"
-                            style={{ paddingLeft: '2.5rem' }}
+                            className="premium-search-input sales-date-input"
                             value={startDate}
                             onChange={(e) => {
                                 setStartDate(e.target.value);
@@ -98,13 +104,14 @@ const Sales = () => {
                             }}
                         />
                     </div>
-                    <span style={{ fontWeight: 800, color: 'var(--text-muted)' }}>to</span>
-                    <div className="premium-search-box" style={{ width: '200px', marginBottom: 0 }}>
+
+                    <span className="sales-filter-separator">to</span>
+
+                    <div className="premium-search-box sales-date-box">
                         <RiCalendarLine className="search-box-icon" />
                         <input
                             type="date"
-                            className="premium-search-input"
-                            style={{ paddingLeft: '2.5rem' }}
+                            className="premium-search-input sales-date-input"
                             value={endDate}
                             onChange={(e) => {
                                 setEndDate(e.target.value);
@@ -115,82 +122,102 @@ const Sales = () => {
                 </div>
             </div>
 
-            <div className="premium-table-container">
-                <table className="premium-table">
-                    <thead>
-                        <tr>
-                            <th>Invoice</th>
-                            <th>Medicines</th>
-                            <th>Total</th>
-                            <th>Sale Details</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {sales.length > 0 ? (
-                            sales.map((sale) => (
-                                <tr key={sale._id}>
-                                    <td>
-                                        <div style={{ fontWeight: 800, color: 'var(--text-main)', fontSize: '1.05rem' }}>{sale.invoiceNumber}</div>
-                                        <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-                                            {new Date(sale.createdAt).toLocaleDateString()} • {new Date(sale.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                            {sale.medicines.map((item, i) => (
-                                                <div key={i} style={{ fontSize: '0.9rem', fontWeight: 650, color: 'var(--text-soft)' }}>
-                                                    {item.medicine?.name} <span style={{ color: 'var(--primary)', fontWeight: 800, marginLeft: '4px' }}>x{item.quantity}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </td>
-                                    <td style={{ fontWeight: 900, color: 'var(--primary)', fontSize: '1.2rem' }}>
-                                        ₹{(sale.grandTotal || 0).toLocaleString()}
-                                    </td>
-                                    <td>
-                                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                            <span style={{ fontWeight: 800, color: 'var(--text-main)' }}>{sale.soldBy?.name || 'Public Kiosk'}</span>
-                                            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-                                                {sale.paymentMethod || 'Cash'} • {sale.storeId || 'Main Store'}
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style={{ display: 'flex', gap: '0.75rem' }}>
-                                            <Link to={`/invoice/${sale._id}`} className="med-act-btn" title="View Bill">
-                                                <RiFileTextLine size={20} color="var(--primary)" />
-                                            </Link>
-                                            <button
-                                                onClick={() => handleDownload(sale._id, sale.invoiceNumber)}
-                                                className="med-act-btn"
-                                                title="Download PDF"
-                                            >
-                                                <RiDownloadLine size={20} color="var(--accent)" />
-                                            </button>
+            <div className="premium-table-container checkout-card sales-table-shell">
+                <div className="sales-table-wrap">
+                    <table className="premium-table sales-table">
+                        <thead>
+                            <tr className="sales-table-head-row">
+                                <th>Invoice</th>
+                                <th>Items</th>
+                                <th>Total Amount</th>
+                                <th>Context</th>
+                                <th className="sales-actions-head">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sales.length > 0 ? (
+                                sales.map((sale) => (
+                                    <tr key={sale._id} className="sales-row">
+                                        <td data-label="Invoice" className="sales-cell">
+                                            <div className="sales-invoice-number">#{sale.invoiceNumber}</div>
+                                            <div className="sales-invoice-date">
+                                                <RiCalendarLine size={12} color="var(--text-soft)" />
+                                                <span className="sales-invoice-date-text">
+                                                    {new Date(sale.createdAt).toLocaleDateString()}
+                                                </span>
+                                            </div>
+                                        </td>
+
+                                        <td data-label="Items" className="sales-cell">
+                                            <div className="sales-items-list">
+                                                {sale.medicines.map((item, index) => (
+                                                    <div key={index} className="sales-item-chip">
+                                                        {item.medicine?.name}
+                                                        <span className="sales-item-chip-qty">x{item.quantity}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </td>
+
+                                        <td data-label="Total Amount" className="sales-cell">
+                                            <div className="sales-total-amount">
+                                                Rs. {(sale.grandTotal || 0).toLocaleString()}
+                                            </div>
+                                        </td>
+
+                                        <td data-label="Context" className="sales-cell">
+                                            <div className="sales-context-block">
+                                                <span className="sales-context-user">{sale.soldBy?.name || 'Public Kiosk'}</span>
+                                                <span className="sales-context-meta">
+                                                    {sale.paymentMethod || 'Cash'} | {sale.storeId || 'Main Store'}
+                                                </span>
+                                            </div>
+                                        </td>
+
+                                        <td data-label="Actions" className="sales-cell sales-actions-cell">
+                                            <div className="sales-actions">
+                                                <Link
+                                                    to={`/invoice/${sale._id}`}
+                                                    className="icon-btn sales-action-btn sales-action-btn--view"
+                                                    title="View Bill"
+                                                >
+                                                    <RiFileTextLine size={20} />
+                                                </Link>
+                                                <button
+                                                    onClick={() => handleDownload(sale._id, sale.invoiceNumber)}
+                                                    className="icon-btn sales-action-btn sales-action-btn--download"
+                                                    title="Download PDF"
+                                                >
+                                                    <RiDownloadLine size={20} />
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="5" className="sales-empty-cell">
+                                        <div className="sales-empty-state">
+                                            <div className="sales-empty-icon">
+                                                <RiSearchLine size={48} opacity={0.3} />
+                                            </div>
+                                            <div>
+                                                <p className="sales-empty-title">No Records Found</p>
+                                                <p className="sales-empty-subtitle">Try adjusting your search or date filters</p>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="5" style={{ textAlign: 'center', padding: '6rem', color: 'var(--text-muted)' }}>
-                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                                        <RiSearchLine size={48} opacity={0.2} />
-                                        <p style={{ fontSize: '1.2rem', fontWeight: 700 }}>No matching sales found</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            {/* Pagination */}
             {pagination.pages > 1 && (
                 <div className="premium-pagination">
                     <button
-                        onClick={() => setPage(p => Math.max(1, p - 1))}
+                        onClick={() => setPage((p) => Math.max(1, p - 1))}
                         disabled={page === 1}
                         className="pagination-btn"
                     >
@@ -200,7 +227,7 @@ const Sales = () => {
                         Page <strong>{page}</strong> of <strong>{pagination.pages}</strong>
                     </div>
                     <button
-                        onClick={() => setPage(p => Math.min(pagination.pages, p + 1))}
+                        onClick={() => setPage((p) => Math.min(pagination.pages, p + 1))}
                         disabled={page === pagination.pages}
                         className="pagination-btn"
                     >
@@ -213,4 +240,3 @@ const Sales = () => {
 };
 
 export default Sales;
-

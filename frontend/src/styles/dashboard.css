@@ -452,4 +452,57 @@
         align-items: flex-start;
         gap: 1.5rem;
     }
+
+    .intel-title {
+        font-size: clamp(2rem, 8vw, 2.75rem);
+        line-height: 1.05;
+    }
+
+    .intel-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .live-status-hub,
+    .status-pill-container {
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .sync-btn,
+    .status-pill {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .metric-card,
+    .activity-panel,
+    .alerts-panel,
+    .distribution-panel {
+        padding: 1.1rem;
+    }
+
+    .feed-entry {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+    }
+
+    .entry-details {
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    .dist-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .prog-bar-wrap {
+        width: 100%;
+    }
 }
