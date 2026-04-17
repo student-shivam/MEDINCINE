@@ -2,6 +2,8 @@
 
 A full-stack MERN pharmacy management system for medicine inventory, billing, orders, analytics, staff access, and invoice generation.
 
+LIVE=https://medicininventry.netlify.app/
+
 ## Tech Stack
 
 - Frontend: React 19, Vite, React Query, Axios, Framer Motion
