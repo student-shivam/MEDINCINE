@@ -11,6 +11,7 @@ import {
 } from 'react-icons/ri';
 import toast from 'react-hot-toast';
 import api from '../../services/api';
+import { resolveUploadUrl } from '../../utils/url';
 
 const ProfileSettings = ({ user, onRefresh, onEditProfile }) => {
     const fileInputRef = useRef(null);
@@ -18,13 +19,11 @@ const ProfileSettings = ({ user, onRefresh, onEditProfile }) => {
     const [previewUrl, setPreviewUrl] = useState('');
     const [uploading, setUploading] = useState(false);
     const [removing, setRemoving] = useState(false);
-    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
     const currentImageUrl = useMemo(() => {
         const image = user?.profileImage || user?.avatar;
         if (!image || image === 'default-avatar.png') return '';
-        return `${baseUrl.replace('/api', '')}/uploads/${image}`;
-    }, [user?.profileImage, user?.avatar, baseUrl]);
+        return resolveUploadUrl(image) || '';
+    }, [user?.profileImage, user?.avatar]);
 
     const shownImage = previewUrl || currentImageUrl;
 

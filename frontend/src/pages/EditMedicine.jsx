@@ -8,6 +8,7 @@ import {
 } from 'react-icons/ri';
 import toast from 'react-hot-toast';
 import api from '../services/api';
+import { resolveUploadUrl } from '../utils/url';
 
 const EditMedicine = () => {
     const { id } = useParams();
@@ -65,14 +66,7 @@ const EditMedicine = () => {
 
     const getMedicineImage = (med) => {
         const candidate = med?.image || med?.imageUrl || med?.medicineImage || med?.photo;
-        if (!candidate) return '';
-        if (candidate.startsWith('http://') || candidate.startsWith('https://')) return candidate;
-
-        const baseUrl = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace('/api', '');
-        if (candidate.startsWith('/uploads/')) {
-            return `${baseUrl}${candidate}`;
-        }
-        return `${baseUrl}/uploads/${candidate}`;
+        return resolveUploadUrl(candidate) || '';
     };
 
     useEffect(() => {

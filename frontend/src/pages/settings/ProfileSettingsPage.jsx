@@ -5,6 +5,7 @@ import { RiArrowLeftLine, RiSaveLine, RiUploadCloud2Line } from 'react-icons/ri'
 import toast from 'react-hot-toast';
 import api from '../../services/api';
 import '../../styles/settings.css';
+import { resolveUploadUrl } from '../../utils/url';
 
 const ProfileSettingsPage = () => {
     const queryClient = useQueryClient();
@@ -24,12 +25,11 @@ const ProfileSettingsPage = () => {
         },
     });
 
-    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
     const currentImage = useMemo(() => {
         const image = data?.profileImage || data?.avatar;
         if (!image || image === 'default-avatar.png') return '';
-        return `${baseUrl.replace('/api', '')}/uploads/${image}`;
-    }, [data?.profileImage, data?.avatar, baseUrl]);
+        return resolveUploadUrl(image) || '';
+    }, [data?.profileImage, data?.avatar]);
 
     const imageSrc = previewUrl || currentImage;
 

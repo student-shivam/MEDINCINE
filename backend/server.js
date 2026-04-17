@@ -5,6 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
+const fs = require('fs');
 const rateLimit = require('express-rate-limit');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorMiddleware');
@@ -27,13 +28,26 @@ const socket = require('./utils/socket');
 const startNotificationCron = require('./utils/cronJobs');
 
 const app = express();
+const uploadsDir = path.join(__dirname, 'uploads');
+const corsOrigins = (process.env.CLIENT_URL || process.env.CORS_ORIGIN || '')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
 
+fs.mkdirSync(uploadsDir, { recursive: true });
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(uploadsDir));
 
 
 app.use(express.json());
-app.use(cors()); // open for local dev (Vite on 5173)
+app.use(cors({
+    origin(origin, callback) {
+        if (!origin || corsOrigins.length === 0 || corsOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+}));
 app.use(helmet({
     // Allow frontend app (different origin/port) to load uploaded images from /uploads
     crossOriginResourcePolicy: { policy: 'cross-origin' },
@@ -64,6 +78,14 @@ app.use(errorHandler);
 
 app.get('/', (req, res) => {
     res.send('Medicine Inventory API is running...');
+});
+
+app.get('/api/health', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'API is healthy',
+        timestamp: new Date().toISOString(),
+    });
 });
 
 

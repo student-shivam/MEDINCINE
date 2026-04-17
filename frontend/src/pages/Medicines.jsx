@@ -12,6 +12,7 @@ import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import api from '../services/api';
+import { resolveUploadUrl } from '../utils/url';
 
 const STATUSES = [
     { value: '', label: 'All Status' },
@@ -87,14 +88,7 @@ const Medicines = () => {
 
     const getMedicineImage = (med) => {
         const candidate = med?.image || med?.imageUrl || med?.medicineImage || med?.photo;
-        if (!candidate) return null;
-        if (candidate.startsWith('http://') || candidate.startsWith('https://')) return candidate;
-
-        const baseUrl = (import.meta.env.VITE_API_URL || 'http://localhost:5000/api').replace('/api', '');
-        if (candidate.startsWith('/uploads/')) {
-            return `${baseUrl}${candidate}`;
-        }
-        return `${baseUrl}/uploads/${candidate}`;
+        return resolveUploadUrl(candidate);
     };
 
     if (isLoading && !data) {

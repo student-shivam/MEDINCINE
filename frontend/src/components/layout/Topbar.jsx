@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import api from '../../services/api';
 import { useCart } from '../../context/CartContext';
+import { resolveUploadUrl } from '../../utils/url';
 
 const PAGE_TITLES = {
     '/admin/dashboard': 'Dashboard',
@@ -37,10 +38,9 @@ const Topbar = ({ toggleSidebar, isSidebarOpen }) => {
     const localUser = JSON.parse(localStorage.getItem('user') || '{}');
     const user = apiUser || localUser;
 
-    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
     const profileImage = user?.profileImage || user?.avatar;
     const avatarUrl = profileImage && profileImage !== 'default-avatar.png'
-        ? `${baseUrl.replace('/api', '')}/uploads/${profileImage}`
+        ? resolveUploadUrl(profileImage)
         : null;
 
     const pageTitle = useMemo(() => {

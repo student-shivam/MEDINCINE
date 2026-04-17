@@ -17,6 +17,7 @@ import toast from 'react-hot-toast';
 import api from '../services/api';
 import AvatarUpload from '../components/profile/AvatarUpload';
 import '../styles/settings.css';
+import { resolveUploadUrl } from '../utils/url';
 
 const Profile = () => {
     const queryClient = useQueryClient();
@@ -68,13 +69,11 @@ const Profile = () => {
     const user = data?.user || {};
     const metrics = data?.metrics || {};
     const activity = data?.recentActivity || {};
-    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
     const avatarUrl = useMemo(() => {
         const image = user.profileImage || user.avatar;
         if (!image || image === 'default-avatar.png') return '';
-        return `${baseUrl.replace('/api', '')}/uploads/${image}`;
-    }, [user.profileImage, user.avatar, baseUrl]);
+        return resolveUploadUrl(image) || '';
+    }, [user.profileImage, user.avatar]);
 
     React.useEffect(() => {
         setProfileForm({
