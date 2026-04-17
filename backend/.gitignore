@@ -1,0 +1,7 @@
+node_modules/
+uploads/
+crash.log
+out.log
+.env
+.env.*
+!.env.example
